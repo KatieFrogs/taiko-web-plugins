@@ -64,24 +64,15 @@ export default class Plugin extends Patch{
 			})
 		)
 		this.disableMultiplayer = disableMultiplayer
-		if(this.disableMultiplayer){
-			this.addEdits(
-				new EditFunction(SongSelect.prototype, "startP2").load(str => {
-					return plugins.insertBefore(str,
-					`return
-					`, 'if(p2.closed){')
-				})
-			)
-		}
 	}
 	start(){
 		if(this.disableMultiplayer){
-			p2.close()
+			p2.disable()
 		}
 	}
 	stop(){
 		if(this.disableMultiplayer){
-			p2.open()
+			p2.enable()
 		}
 	}
 }
