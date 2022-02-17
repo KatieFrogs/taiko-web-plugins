@@ -1,5 +1,8 @@
 export default class Plugin extends Patch{
 	name = "Show BPM"
+	name_lang = {
+		ja: "BPMを表示する"
+	}
 	version = "22.02.11"
 	description = "Displays the current BPM in game"
 	author = "Katie Frogs"

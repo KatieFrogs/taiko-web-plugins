@@ -1,5 +1,8 @@
 export default class Plugin extends Patch{
 	name = "Millisecond Accuracy"
+	name_lang = {
+		ja: "ミリ秒単位の精度"
+	}
 	version = "22.02.17"
 	description = "Replaces the judge score with the accuracy in milliseconds"
 	author = "Katie Frogs"

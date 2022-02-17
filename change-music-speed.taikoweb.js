@@ -1,5 +1,8 @@
 export default class Plugin extends Patch{
 	name = "Change Music Speed"
+	name_lang = {
+		ja: "x1.25音楽速度"
+	}
 	version = "22.02.17"
 	description = "Slow down or speed up the music in game"
 	author = "Katie Frogs"
