@@ -10,23 +10,17 @@ export default class Plugin extends Patch{
 		var disableMultiplayer = true
 		
 		this.addEdits(
-			new EditValue(Sound.prototype, "play").load(func => {
-				var str = plugins.strFromFunc(func)
-				var args = plugins.argsFromFunc(func)
+			new EditFunction(Sound.prototype, "play").load((str, args) => {
 				args.push("playbackRate")
-				str = plugins.insertBefore(str,
+				return plugins.insertBefore(str,
 				`if(playbackRate){
 					source.playbackRate.value = playbackRate
 				}
 				`, 'source.start')
-				return Function(...args, str)
 			}),
-			new EditValue(Sound.prototype, "playLoop").load(func => {
-				var str = plugins.strFromFunc(func)
-				var args = plugins.argsFromFunc(func)
+			new EditFunction(Sound.prototype, "playLoop").load((str, args) => {
 				args.push("playbackRate")
-				str = plugins.insertAfter(str, 'this.play(time, true, seek1, until', `, playbackRate`)
-				return Function(...args, str)
+				return plugins.insertAfter(str, 'this.play(time, true, seek1, until', `, playbackRate`)
 			}),
 			new EditFunction(Game.prototype, "playMainMusic").load(str => {
 				str = plugins.insertBefore(str,

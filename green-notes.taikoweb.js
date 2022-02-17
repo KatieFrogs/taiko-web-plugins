@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Green Notes"
-	version = "22.02.16"
+	version = "22.02.17"
 	description = "Adds support for green notes (G) and ad-lib notes (F) in custom charts"
 	author = "Katie Frogs"
 	
@@ -26,12 +26,9 @@ export default class Plugin extends Patch{
 				}
 				`, '}\n\t\tctx.restore()')
 			}),
-			new EditValue(Controller.prototype, "displayScore").load(func => {
-				var str = plugins.strFromFunc(func)
-				var args = plugins.argsFromFunc(func)
+			new EditFunction(Controller.prototype, "displayScore").load((str, args) => {
 				args.push("adlib")
-				str = plugins.insertAfter(str, 'bigNote', `, adlib`)
-				return Function(...args, str)
+				return plugins.insertAfter(str, 'bigNote', `, adlib`)
 			}),
 			new EditFunction(Game.prototype, "init").load(str => {
 				str = plugins.insertAfter(str, 'gauge: 0,', `
@@ -219,14 +216,11 @@ export default class Plugin extends Patch{
 					faceID = noteFace.big
 				`, '}else if(type === "balloon"){')
 			}),
-			new EditValue(View.prototype, "displayScore").load(func => {
-				var str = plugins.strFromFunc(func)
-				var args = plugins.argsFromFunc(func)
+			new EditFunction(View.prototype, "displayScore").load((str, args) => {
 				args.push("adlib")
-				str = plugins.insertAfter(str,
+				return plugins.insertAfter(str,
 				'this.currentScore.bigNote = bigNote', `
 				this.currentScore.adlib = adlib`)
-				return Function(...args, str)
 			})
 		)
 	}
