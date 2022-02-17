@@ -26,6 +26,9 @@ export default class Plugin extends Patch{
 				}
 				`, '}\n\t\tctx.restore()')
 			}),
+			new EditFunction(Controller.prototype, "init").load(str => {
+				return plugins.insertAfter(str, '["don", "ka", "daiDon", "daiKa"', `, "green"`)
+			}),
 			new EditFunction(Controller.prototype, "displayScore").load((str, args) => {
 				args.push("adlib")
 				return plugins.insertAfter(str, 'bigNote', `, adlib`)
