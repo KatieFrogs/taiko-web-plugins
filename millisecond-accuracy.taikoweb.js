@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Millisecond Accuracy"
-	version = "22.02.11"
+	version = "22.02.17"
 	description = "Replaces the judge score with the accuracy in milliseconds"
 	author = "Katie Frogs"
 	
@@ -22,7 +22,7 @@ export default class Plugin extends Patch{
 			new EditFunction(Mekadon.prototype, "playNow").load(str => {
 				return plugins.insertBefore(str,
 				`this.game.lastRelative = this.getMS() - ms
-				`, 'this.controller.displayScore(score, false, keyDai)')
+				`, 'this.controller.displayScore')
 			})
 		)
 	}
