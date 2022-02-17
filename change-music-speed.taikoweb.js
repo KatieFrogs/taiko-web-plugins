@@ -1,11 +1,13 @@
 export default class Plugin extends Patch{
 	name = "Change Music Speed"
-	version = "22.02.15"
+	version = "22.02.17"
 	description = "Slow down or speed up the music in game"
 	author = "Katie Frogs"
 	
 	load(){
 		var playbackRate = 1.25
+		
+		var disableMultiplayer = true
 		
 		this.addEdits(
 			new EditValue(Sound.prototype, "play").load(func => {
@@ -67,6 +69,26 @@ export default class Plugin extends Patch{
 				return plugins.insertAfter(str, 'this.preview.playLoop(delay / 1000, false, prvTime', `, undefined, undefined, ${playbackRate}`)
 			})
 		)
+		this.disableMultiplayer = disableMultiplayer
+		if(this.disableMultiplayer){
+			this.addEdits(
+				new EditFunction(SongSelect.prototype, "startP2").load(str => {
+					return plugins.insertBefore(str,
+					`return
+					`, 'if(p2.closed){')
+				})
+			)
+		}
+	}
+	start(){
+		if(this.disableMultiplayer){
+			p2.close()
+		}
+	}
+	stop(){
+		if(this.disableMultiplayer){
+			p2.open()
+		}
 	}
 }
 
