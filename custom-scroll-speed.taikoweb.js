@@ -12,7 +12,8 @@ export default class Plugin extends Patch{
 			name_lang: {},
 			description: null,
 			description_lang: {},
-			format: "%sx"
+			format: "%sx",
+			format_lang: {}
 		}
 	}
 	
