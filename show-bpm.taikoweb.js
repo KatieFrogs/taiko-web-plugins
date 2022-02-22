@@ -5,6 +5,9 @@ export default class Plugin extends Patch{
 	}
 	version = "22.02.22"
 	description = "Displays the current BPM in game"
+	description_lang = {
+		ja: "ゲーム中のBPMを表示します"
+	}
 	author = "Katie Frogs"
 	
 	load(){

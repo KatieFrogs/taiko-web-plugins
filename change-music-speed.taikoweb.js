@@ -1,10 +1,13 @@
 export default class Plugin extends Patch{
 	name = "Change Music Speed"
 	name_lang = {
-		ja: "x1.25音楽速度"
+		ja: "音楽の速度を変更"
 	}
 	version = "22.02.22"
 	description = "Slow down or speed up the music in game"
+	description_lang = {
+		ja: "音楽の速度を変更します"
+	}
 	author = "Katie Frogs"
 	
 	playbackRate = 1.25
@@ -13,7 +16,9 @@ export default class Plugin extends Patch{
 	strings = {
 		playbackRate: {
 			name: "Music Speed Multiplier",
-			name_lang: {},
+			name_lang: {
+				ja: "音楽の速度倍率"
+			},
 			description: null,
 			description_lang: {},
 			format: "%sx",
