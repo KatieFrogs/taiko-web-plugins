@@ -1,14 +1,14 @@
 export default class Plugin extends Patch{
 	name = "Offline Account"
-	version = "22.02.16"
+	version = "22.02.22"
 	description = "Allows setting your name and customizing your Don without logging in"
 	author = "Katie Frogs"
 	
 	load(){
 		this.offlineAccount = {
 			loggedIn: true,
-			username: strings.defaultName,
-			displayName: strings.defaultName,
+			username: "Don-chan",
+			displayName: "Don-chan",
 			don: {
 				body_fill: defaultDon.body_fill,
 				face_fill: defaultDon.face_fill
