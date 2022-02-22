@@ -160,10 +160,6 @@ export default class Plugin extends Patch{
 	}
 }
 
-if(typeof GM_info === "object"){
-	addEventListener("ready", () => plugins.add(Plugin)?.start())
-}
-
 /*!
 
 JSZip v3.7.1 - A JavaScript class for generating and reading zip files

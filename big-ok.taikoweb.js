@@ -28,7 +28,3 @@ export default class Plugin extends Patch{
 		)
 	}
 }
-
-if(typeof GM_info === "object"){
-	addEventListener("ready", () => plugins.add(Plugin)?.start())
-}

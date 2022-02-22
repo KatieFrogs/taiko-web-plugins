@@ -22,7 +22,3 @@ export default class Plugin extends Patch{
 		this.log("unload")
 	}
 }
-
-if(typeof GM_info === "object"){
-	addEventListener("ready", () => plugins.add(Plugin)?.start())
-}
