@@ -1,11 +1,11 @@
 export default class Plugin extends Patch{
 	name = "Green Notes"
-	version = "22.02.17"
+	version = "22.02.28"
 	description = "Adds support for green notes (G) and ad-lib notes (F) in custom charts"
 	author = "Katie Frogs"
 	
 	load(){
-		snd.sfxGain.load(new RemoteFile(se_hidden())).then(sound => {
+		var promise = snd.sfxGain.load(new RemoteFile(se_hidden())).then(sound => {
 			assets.sounds["se_hidden"] = sound
 			assets.sounds["se_hidden_p1"] = sound.copy(snd.sfxGainL)
 			assets.sounds["se_hidden_p2"] = sound.copy(snd.sfxGainR)
@@ -226,6 +226,7 @@ export default class Plugin extends Patch{
 				this.currentScore.adlib = adlib`)
 			})
 		)
+		return promise
 	}
 	unload(){
 		delete assets.sounds["se_hidden"]
