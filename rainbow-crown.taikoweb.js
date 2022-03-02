@@ -1,5 +1,5 @@
 export default class Plugin extends Patch {
-    name = "Rainbow Crown""
+    name = "Rainbow Crown"
     version = "22.03.2"
     description = "Adds Rainbow Crown"
     author = "purerosefallen/Katie Frogs"
