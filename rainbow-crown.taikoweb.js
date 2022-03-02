@@ -1,7 +1,7 @@
 export default class Plugin extends Patch {
     name = "Rainbow Crown"
     version = "22.03.2"
-    description = "Adds Rainbow Crown"
+    description = "Adds Rainbow Crown, Intended to be used hidden and always enabled."
     author = "purerosefallen/Katie Frogs"
 
     load() {
