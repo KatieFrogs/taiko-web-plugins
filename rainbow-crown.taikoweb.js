@@ -38,6 +38,8 @@ export default class Plugin extends Patch {
             }),
             // Rainbow Crown #6 (<3 Katie)
             new EditFunction(ScoreStorage.prototype, "init").load(str => {
+                str = plugins.insertAfter(str,
+                'this.crownValue = ["", "silver", "gold"', `, "rainbow"`)
                 return plugins.insertAfter(str,
                 'this.scoreKeys = ["points", "good", "ok", "bad", "maxCombo", "drumroll"', `, "rainbow"`)
             }),
