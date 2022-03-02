@@ -13,45 +13,34 @@ export default class Plugin extends Patch {
 
         this.addEdits(
             // Rainbow Crown #1
-            new EditFunction(CanvasDraw.prototype, "crown").load(str => {
-                str = plugins.strReplace(str, `if(config.type === "gold"){`, `if(config.type === "rainbow"){ // TODO
-				grd.addColorStop(0, "#ffffc5")
-				grd.addColorStop(0.23, "#ffff44")
-				grd.addColorStop(0.53, "#efbd12")
-				grd.addColorStop(0.83, "#ffff44")
-				grd.addColorStop(1, "#efbd12")
-			}else if(config.type === "gold"){`)
-                return str
-            }),
-            // Rainbow Crown #2
             new EditFunction(Scoresheet.prototype, "redraw").load(str => {
                 str = plugins.strReplace(str, `crownType = results.bad === "0" ? "gold" : "silver"`, `crownType = results.bad === "0" ? (results.ok === "0" ? "rainbow" : "gold") : "silver"`)
                 str = plugins.strReplace(str, `if(crownType === "gold"){`, `if(crownType === "gold" || crownType === "rainbow"){ // TODO: sound effect of donder full combo`)
                 return str
             }),
-            // Rainbow Crown #4
+            // Rainbow Crown #2
             new EditFunction(Scoresheet.prototype, "saveScore").load(str => {
                 str = plugins.strReplace(str, `crown = this.resultsObj.bad === 0 ? "gold" : "silver"`, `crown = this.resultsObj.bad === 0 ? (this.resultsObj.ok === 0 ? "rainbow" : "gold") : "silver"`)
                 str = plugins.strReplace(str, `if(oldScore && (oldScore.crown === "gold" || oldScore.crown === "silver" && !crown)){`, `if(oldScore && (oldScore.crown === "rainbow" || oldScore.crown === "gold" && (crown === "silver" || !crown) || oldScore.crown === "silver" && !crown)){`)
                 str = plugins.strReplace(str, `}else if(oldScore && (crown === "gold" && oldScore.crown !== "gold" || crown && !oldScore.crown)){`, `}else if(oldScore && ((crown === "rainbow" && oldScore.crown !== "rainbow") || crown === "gold" && (oldScore.crown === "silver"  ||!oldScore.crown) || crown && !oldScore.crown)){`)
                 return str
             }),
-            // Rainbow Crown #6 (<3 Katie)
+            // Rainbow Crown #3 (<3 Katie)
             new EditFunction(ScoreStorage.prototype, "init").load(str => {
                 str = plugins.insertAfter(str,
-                'this.crownValue = ["", "silver", "gold"', `, "rainbow"`)
+                    'this.crownValue = ["", "silver", "gold"', `, "rainbow"`)
                 return plugins.insertAfter(str,
-                'this.scoreKeys = ["points", "good", "ok", "bad", "maxCombo", "drumroll"', `, "rainbow"`)
+                    'this.scoreKeys = ["points", "good", "ok", "bad", "maxCombo", "drumroll"', `, "rainbow"`)
             }),
             new EditFunction(ScoreStorage.prototype, "load").load(str => {
                 str = plugins.insertBefore(str,
-                `if(name === "rainbow" && value){
+                    `if(name === "rainbow" && value){
                     score.crown = "rainbow"
                 }
                 `, 'score[name] = value')
-                str = plugins.insertAfter(str, 'parseInt(scoreArray[j]', ` || 0`)
+				str = plugins.insertAfter(str, 'parseInt(scoreArray[j]', ` || 0`)
                 return plugins.insertBefore(str,
-                `if(score.crown === "gold" && score.good >= 1 && score.ok === 0 && score.bad === 0){
+                    `if(score.crown === "gold" && score.good >= 1 && score.ok === 0 && score.bad === 0){
                     score.crown = "rainbow"
                 }
                 `, 'if(!songAdded){')
@@ -60,31 +49,29 @@ export default class Plugin extends Patch {
                 str = plugins.insertAfter(str, 'var scoreArray = []', `
                 score[diff].rainbow = score[diff].crown === "rainbow"`)
                 return plugins.insertBefore(str,
-                `score[diff].crown === "rainbow" ? "2" : `, 'this.crownValue')
+                    `score[diff].crown === "rainbow" ? "2" : `, 'this.crownValue')
             }),
-            // Rainbow Crown #6.2 (<3 Katie)
+            // Rainbow Crown #4 (<3 Katie)
             new EditValue(window, "scoreStorage").load(() => {
                 this.oldScoreStoage = scoreStorage
                 this.newScoreStorage = new ScoreStorage()
                 this.newScoreStorage.load(scoreStorage.prepareScores(scoreStorage.scoreStrings))
                 return this.newScoreStorage
             }),
-            // Rainbow Crown #7
+            // Rainbow Crown #5
             new EditFunction(CanvasDraw.prototype, "crown").load(str => {
-                str = plugins.strReplace(str, `grd.addColorStop(0, "#ffffc5")
-				grd.addColorStop(0.23, "#ffff44")
-				grd.addColorStop(0.53, "#efbd12")
-				grd.addColorStop(0.83, "#ffff44")
-				grd.addColorStop(1, "#efbd12")`, `grd.addColorStop(0,"#0000ff")
+                str = plugins.strReplace(str, `if(config.type === "gold"){`, `if(config.type === "rainbow"){ // TODO
+				grd.addColorStop(0,"#0000ff")
 				grd.addColorStop(0.15,"#00ffff")
 				grd.addColorStop(0.35,"#00ff88")
 				grd.addColorStop(0.5,"#ffffff")
 				grd.addColorStop(0.65,"#ffff00")
 				grd.addColorStop(0.85,"#ff8800")
-				grd.addColorStop(1,"#ff00ff")`)
+				grd.addColorStop(1,"#ff00ff")
+			}else if(config.type === "gold"){`)
                 return str
             }),
-            // Rainbow Crown #8
+            // Rainbow Crown #6
             new EditFunction(Controller.prototype, "gameEnded").load(str => {
                 str = plugins.strReplace(str, `if(score.bad === 0){
 				vp = "fullcombo"
@@ -115,15 +102,14 @@ export default class Plugin extends Patch {
         )
         return promise
     }
-    stop(){
-        if(this.oldScoreStoage && this.newScoreStorage){
+    stop() {
+        if (this.oldScoreStoage && this.newScoreStorage) {
             this.oldScoreStoage.load(this.newScoreStorage.prepareScores(this.newScoreStorage.scoreStrings))
         }
         delete this.oldScoreStoage
         delete this.newScoreStorage
     }
 }
-
 
 
 // Add Donderful Audio
