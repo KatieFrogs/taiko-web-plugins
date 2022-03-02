@@ -49,6 +49,7 @@ export default class Plugin extends Patch {
                     score.crown = "rainbow"
                 }
                 `, 'score[name] = value')
+                str = plugins.insertAfter(str, 'parseInt(scoreArray[j]', ` || 0`)
                 return plugins.insertBefore(str,
                 `if(score.crown === "gold" && score.good >= 1 && score.ok === 0 && score.bad === 0){
                     score.crown = "rainbow"
