@@ -29,14 +29,23 @@ export default class Plugin extends Patch{
 				this.logoutButton.style.display = "none"`
 			}),
 			new EditValue(Account.prototype, "request").load(() => this.request.bind(this)),
+			new EditFunction(ScoreStorage.prototype, "load").load(str => {
+				return plugins.strReplace(str, 'account.loggedIn', `false`)
+			}),
 			new EditFunction(scoreStorage, "load").load(str => {
+				return str.replace('account.loggedIn', `false`)
+			}),
+			new EditFunction(ScoreStorage.prototype, "write").load(str => {
 				return plugins.strReplace(str, 'account.loggedIn', `false`)
 			}),
 			new EditFunction(scoreStorage, "write").load(str => {
-				return plugins.strReplace(str, 'account.loggedIn', `false`)
+				return str.replace('account.loggedIn', `false`)
+			}),
+			new EditFunction(ScoreStorage.prototype, "sendToServer").load(str => {
+				return plugins.strReplace(str, 'if(account.loggedIn){', `if(false){`)
 			}),
 			new EditFunction(scoreStorage, "sendToServer").load(str => {
-				return plugins.strReplace(str, 'account.loggedIn', `false`)
+				return str.replace('if(account.loggedIn){', `if(false){`)
 			})
 		)
 	}
