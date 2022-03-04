@@ -124,7 +124,7 @@
 		},
 		settings: {
 			language: {
-				name: "Español (Latinoamérica)"
+				name: "Idioma"
 			},
 			resolution: {
 				name: "Resolución del juego",
