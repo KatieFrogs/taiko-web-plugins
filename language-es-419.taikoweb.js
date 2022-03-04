@@ -20,10 +20,10 @@
 		titleDisclaimer: "Este simulador no-oficial no está afiliado a BANDAI NAMCO.",
 		titleCopyright: null,
 		selectSong: "Seleccionar canción",
-		selectDifficulty: "Selecciónar dificultad",
+		selectDifficulty: "Seleccionar dificultad",
 		back: "Regresar",
 		random: "Aleatoria",
-		randomSong: "Canción Aletoria",
+		randomSong: "Canción Aleatoria",
 		howToPlay: "Como Jugar",
 		aboutSimulator: "Acerca del simulador",
 		gameSettings: "Opciones del juego",
@@ -31,7 +31,7 @@
 		none: "Ninguno",
 		auto: "Auto",
 		netplay: "Multijugador",
-		easy: "Facil",
+		easy: "Fácil",
 		normal: "Normal",
 		hard: "Difícil",
 		oni: "Extremo",
@@ -92,8 +92,8 @@
 			otherControls: "Otros controles",
 			otherTutorial: [
 				"%s — pausa el juego",
-				"%s y %s mientras escojes una canción — cambia de categoria",
-				"%s mientras escojes dificultad — activa el modo automatico",
+				"%s y %s mientras escojes una canción — cambia de categoría",
+				"%s mientras escojes dificultad — activa el modo automático",
 				"%s mientras escojes dificultad — activa el modo 2 jugadores"
 			],
 			ok: "OK",
@@ -111,10 +111,10 @@
 			bugReporting: [
 				"Este Simulador aun esta en desarrollo.",
 				"Por favor reporta cualquier error que encuentres.",
-				"Puedes reportar los errores en nuestro repositorio de Git o via email."
+				"Puedes reportar los errores en nuestro repositorio de Git o vía email."
 			],
 			diagnosticWarning: "Asegurate de incluir los siguientes datos de diagnostico!",
-			issueTemplate: "###### Describe el problema que tuviste abajo, Tambien incluye in screenshot y la informacion de diagnostico.",
+			issueTemplate: "###### Describe el problema que tuviste abajo, También incluye in screenshot y la información de diagnostico.",
 			issues: "Incidencias"
 		},
 		session: {
@@ -137,14 +137,14 @@
 				name: "Animación de toque"
 			},
 			keyboardSettings: {
-				name: "Configuración de teclado",
+				name: "Mapeo del teclado",
 				ka_l: "Borde izquierdo",
 				don_l: "Superficie izquierda",
 				don_r: "Superficie derecha",
 				ka_r: "Borde derecho"
 			},
 			gamepadLayout: {
-				name: "Configuracion del Gamepad",
+				name: "Configuración del Gamepad",
 				a: "Tipo A",
 				b: "Tipo B",
 				c: "Tipo C"
@@ -155,10 +155,10 @@
 				calibration: "Calibración de latencia",
 				audio: "Audio",
 				video: "Video",
-				drumSounds: "Sonidos de Tambores"
+				drumSounds: "Sonidos del Tambor"
 			},
 			easierBigNotes: {
-				name: "Notas grandes mas faciles"
+				name: "Notas grandes mas fáciles"
 			},
 			showLyrics: {
 				name: "Mostrar letras"
@@ -169,9 +169,9 @@
 			ok: "OK"
 		},
 		calibration: {
-			title: "Calibracón de latencia",
+			title: "Calibración de latencia",
 			ms: "%sms",
-			back: "Regresar a configuración",
+			back: "Regresar a opciones",
 			retryPrevious: "Reintentar Anterior",
 			start: "Comenzar",
 			finish: "Terminar",
@@ -183,7 +183,7 @@
 			audioComplete: "Calibración de latencia de audio completada!",
 			videoHelp: {
 				title: "Calibración de latencia de video",
-				content: "Esta vez no habrán sonidos.\n\nEn cambio, observa las notas parpadeantes con forma de circulo, golpea el tambor cuando segun vayan apareciendo!"
+				content: "Esta vez no habrán sonidos.\n\nEn cambio, observa las notas parpadeantes con forma de circulo, golpea el tambor cuando según vayan apareciendo!"
 			},
 			videoComplete: "Calibración de latencia de video completada!",
 			results: {
@@ -204,7 +204,7 @@
 			registerAccount: "Registrar Cuenta",
 			passwordsDoNotMatch: "Las contraseñas no coinciden",
 			newPasswordsDoNotMatch: "Las nuevas contraseñas no coinciden",
-			cannotBeEmpty: "%s no puede estar vacio",
+			cannotBeEmpty: "%s no puede estar vació",
 			error: "Ha ocurrido un error mientras procesamos tu solicitud",
 			logout: "Cerrar Sesión",
 			back: "Regresar",
@@ -227,16 +227,16 @@
 		},
 		serverError: {
 			not_logged_in: "No conectado",
-			invalid_username: "Usuario Invalido, un usuario puede solo contener letras, numeros y guion-bajo. Ademas debe tener entre 3 y 20 caracteres de largo",
+			invalid_username: "Usuario Invalido, un usuario puede solo contener letras, números y guion-bajo. Ademas debe tener entre 3 y 20 caracteres de largo",
 			username_in_use: "Ya existe un usuario con este nombre",
 			invalid_password: "No se puede usar esta contraseña, por favor verifica que tu contraseña tenga al menos 6 caracteres de largo",
-			invalid_username_password: "Usuario o contraseña invalidos",
+			invalid_username_password: "Usuario o contraseña inválidos",
 			invalid_display_name: "No se puede usar este nombre, por favor verifica que tu nuevo nombre tenga hasta 25 caracteres de largo",
 			invalid_don: "No se pudo guardar tu Don personalizado",
 			current_password_invalid: "La contraseña actual no coincide",
 			invalid_new_password: "No se puede usar este contraseña, por favor verifica que al menos tenga 6 caracteres de largo como minimo",
-			verify_password_invalid: "La contraseña de verificacion no coincide",
-			invalid_csrf: "Ha expirado el token de seguridad. Por favor recarga la pagina."
+			verify_password_invalid: "La contraseña de verificación no coincide",
+			invalid_csrf: "Ha expirado el Token de seguridad. Por favor recarga la pagina."
 		},
 		browserSupport: {
 			browserWarning: "Estas usando un navegador no compatible (%s)",
@@ -260,7 +260,7 @@
 			gdriveAccount: "Cambiar cuentas",
 			dropzone: "Arrastra tus archivos aquí",
 			importError: "Error al importar",
-			noSongs: "No se han encontrado archivos de partitura taiko en la carpeta que entregaste."
+			noSongs: "No se han encontrado archivos de partitura Taiko en la carpeta que entregaste."
 		},
 		gpicker: {
 			locale: "es-419",
@@ -268,19 +268,19 @@
 			starred: "Destacados",
 			sharedWithMe: "Compartidos conmigo",
 			authError: "Error de Autenticación: %s",
-			cookieError: "Esta funcion requiere cookies de terceros."
+			cookieError: "Esta función requiere Cookies de terceros."
 		},
 		plugins: {
-			title: "Modulos",
+			title: "Módulos",
 			unloadAll: "Desactivar todos",
-			warning: "Vas a cargar %s. Los modulos solo deberian ser cargados si confias en ellos, ¿Deseas continuar?",
+			warning: "Vas a cargar %s. Los módulos solo deberían ser cargados si confias en ellos, ¿Deseas continuar?",
 			plugin: {
 				one: "modulo de %s",
-				other: "modulos de %s",
-				many: "modulos de %s"
+				other: "módulos de %s",
+				many: "módulos de %s"
 			},
 			author: "por %s",
-			version: "Version %s"
+			version: "Versión %s"
 		},
 		search: {
 			search: "Buscar Canciones",
@@ -288,15 +288,15 @@
 			noResults: "No se han encontrado resultados.",
 			tip: "Tip:",
 			tips: [
-				"Abre la ventana de busqueda presionando CTRL+F!",
-				"Usa uno o mas filtros de busqueda! Todos los que quieras!",
+				"Abre la ventana de búsqueda presionando CTRL+F!",
+				"Usa uno o mas filtros de búsqueda! Todos los que quieras!",
 				"Filtra por genero musical utilizando la palabra clave \"genre:\"! (Ej: \"genre:variety\", \"genre:namco\")",
 				"Usa filtros como \"oni:10\" para buscar canciones con una dificultad en particular!",
-				"Los filtros de dificultad tambien soportan rangos! Intenta con: \"ura:1-5\"!",
+				"Los filtros de dificultad también soportan rangos! Intenta con: \"ura:1-5\"!",
 				"¿Quieres ver solamente tus Full Combos? Intenta con: \"gold:any\", \"gold:oni\", etc.!",
 				"¿Quieres solo ver canciones creativas/custom? Prueba con el filtro \"creative:yes\"!",
 				"Busca canciones que tengan letras/lyrics disponibles con el filtro \"lyrics:yes\" !",
-				"¿Te gustaria probar algo nuevo? Utiliza el filtro \"played:no\" para ver canciones que no hayas jugado nunca antes!",
+				"¿Te gustaría probar algo nuevo? Utiliza el filtro \"played:no\" para ver canciones que no hayas jugado nunca antes!",
 				"¿Buscas canciones hechas por un creador en particular? Utiliza el filtro \"maker:<name>\"!"
 			]
 		},
