@@ -210,23 +210,28 @@ export default class Plugin extends Patch{
 			})
 		)
 		if(d["loading gif"]){
-			var oldDancingDon = assets.image["dancing-don"]
-			var canvas = document.createElement("canvas")
-			canvas.width = oldDancingDon.width
-			canvas.height = oldDancingDon.height
-			var ctx = canvas.getContext("2d")
-			ctx.drawImage(oldDancingDon, 0, 0)
-			var promise = new Promise(resolve => canvas.toBlob(resolve)).then(blob => {
-				var image = document.createElement("img")
-				var promise = pageEvents.load(image)
-				image.id = "dancing-don2.gif"
-				image.src = URL.createObjectURL(blob)
-				loader.assetsDiv.appendChild(image)
-				this.newDancingDon = image
-				this.addEdits(
-					new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
-				)
-				return promise
+			var image = document.createElement("img")
+			image.crossOrigin = "anonymous"
+			var promise = pageEvents.load(image)
+			image.src = assets.image["dancing-don"].src
+			promise = promise.then(() => {
+				var canvas = document.createElement("canvas")
+				canvas.width = image.width
+				canvas.height = image.height
+				var ctx = canvas.getContext("2d")
+				ctx.drawImage(image, 0, 0)
+				return new Promise(resolve => canvas.toBlob(resolve)).then(blob => {
+					var image = document.createElement("img")
+					var promise = pageEvents.load(image)
+					image.id = "dancing-don2.gif"
+					image.src = URL.createObjectURL(blob)
+					loader.assetsDiv.appendChild(image)
+					this.newDancingDon = image
+					this.addEdits(
+						new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
+					)
+					return promise
+				})
 			})
 		}else{
 			var promise = Promise.resolve()
