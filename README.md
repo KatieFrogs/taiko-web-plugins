@@ -30,7 +30,7 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Old Song List**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/old-song-list.taikoweb.js)  
   Restores the default taiko.bui.pm song list to show non-custom songs
 
-### Additional languages
+### Additional Languages
 - [**Language: Spanish (Latin America)**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-es-419.taikoweb.js)
   - (es-419) [Idioma: Español (Latinoamérica)](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-es-419.taikoweb.js)
 
@@ -38,14 +38,14 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Disable Animations**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/disable-animations.taikoweb.js)  
   Turn off most of the animated elements in the game
 
-### For fun
+### For Fun
 - [**Big OK**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/big-ok.taikoweb.js)  
   When you get an OK judge score, the whole screen becomes a big OK
 
 - [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/green-notes.taikoweb.js)  
   Adds support for green notes (G) and ad-lib notes (F) in custom charts
 
-### Debugging and testing
+### Debugging and Testing
 - [**Millisecond Accuracy**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/millisecond-accuracy.taikoweb.js)  
   Replaces the judge score with the accuracy in milliseconds
   - (ja) [ミリ秒単位の精度](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/millisecond-accuracy.taikoweb.js)  
