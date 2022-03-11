@@ -33,6 +33,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 ### Additional Languages
 - [**Language: Spanish (Latin America)**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-es-419.taikoweb.js)
   - (es-419) [Idioma: Español (Latinoamérica)](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-es-419.taikoweb.js)
+  
+- [**Language: French**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-fr.taikoweb.js)
+  - (fr) [Langue : Français](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/language-fr.taikoweb.js)
 
 ### Accessibility
 - [**Disable Animations**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/disable-animations.taikoweb.js)  
