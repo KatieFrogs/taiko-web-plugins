@@ -43,7 +43,7 @@
 		sessionEnd: "Finir la Partie en Ligne",
 		scoreSaveFailed: "Connexion au serveur impossible, votre score n'a pas été sauvegardé.\n\nReconnectez-vous ou rafraîchissez la page pour réessayer de sauvegarder.",
 		loadSongError: "Un problème est survenue lors du chargement de la chanson %s avec l'ID %s.\n\n%s",
-		accessNotGrantedError: "",
+		accessNotGrantedError: null,
 		loading: "Chargement...",
 		waitingForP2: "En attente d'un autre joueur...",
 		cancel: "Annuler",
