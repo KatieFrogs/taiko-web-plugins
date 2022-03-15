@@ -211,27 +211,38 @@ export default class Plugin extends Patch{
 		)
 		if(d["loading gif"]){
 			var image = document.createElement("img")
-			image.crossOrigin = "anonymous"
+			image.crossOrigin = "Anonymous"
 			var promise = pageEvents.load(image)
 			image.src = assets.image["dancing-don"].src
-			promise = promise.then(() => {
-				var canvas = document.createElement("canvas")
-				canvas.width = image.width
-				canvas.height = image.height
-				var ctx = canvas.getContext("2d")
-				ctx.drawImage(image, 0, 0)
-				return new Promise(resolve => canvas.toBlob(resolve)).then(blob => {
-					var image = document.createElement("img")
-					var promise = pageEvents.load(image)
-					image.id = "dancing-don2.gif"
-					image.src = URL.createObjectURL(blob)
-					loader.assetsDiv.appendChild(image)
-					this.newDancingDon = image
-					this.addEdits(
-						new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
-					)
-					return promise
-				})
+			promise = promise.then(() => image, () => {}).then(image => {
+				if(image){
+					var canvas = document.createElement("canvas")
+					canvas.width = image.width
+					canvas.height = image.height
+					var ctx = canvas.getContext("2d")
+					ctx.drawImage(image, 0, 0)
+					return new Promise(resolve => {
+						try{
+							canvas.toBlob(resolve)
+						}catch(e){
+							resolve()
+						}
+					}).then(blob => {
+						if(blob){
+							var image = document.createElement("img")
+							var promise = pageEvents.load(image)
+							image.id = "dancing-don2.gif"
+							image.src = URL.createObjectURL(blob)
+							return promise.then(() => {
+								loader.assetsDiv.appendChild(image)
+								this.newDancingDon = image
+								this.addEdits(
+									new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
+								)
+							}, () => {})
+						}
+					})
+				}
 			})
 		}else{
 			var promise = Promise.resolve()
@@ -320,10 +331,17 @@ export default class Plugin extends Patch{
 				}`
 			}
 			if(d["loading gif"]){
-				css += `
-				#loading-don{
-					background-image: url("${this.newDancingDon.src}");
-				}`
+				if(this.newDancingDon){
+					css += `
+					#loading-don{
+						background-image: url("${this.newDancingDon.src}");
+					}`
+				}else{
+					css += `
+					#loading-don{
+						background-image: none;
+					}`
+				}
 			}
 			if(css){
 				this.style = document.createElement("style")
