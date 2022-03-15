@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Disable Animations"
-	version = "22.03.10"
+	version = "22.03.15"
 	description = "Turn off most of the animated elements in the game"
 	author = "Katie Frogs"
 	
