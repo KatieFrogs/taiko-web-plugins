@@ -213,7 +213,7 @@ export default class Plugin extends Patch{
 			var image = document.createElement("img")
 			image.crossOrigin = "Anonymous"
 			var promise = pageEvents.load(image)
-			image.src = assets.image["dancing-don"].src
+			image.src = assets.image["dancing-don"].src + "?anonymous"
 			promise = promise.then(() => image, () => {}).then(image => {
 				if(image){
 					var canvas = document.createElement("canvas")
