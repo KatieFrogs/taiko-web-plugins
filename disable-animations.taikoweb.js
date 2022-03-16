@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Disable Animations"
-	version = "22.03.15"
+	version = "22.03.16"
 	description = "Turn off most of the animated elements in the game"
 	author = "Katie Frogs"
 	
@@ -210,45 +210,38 @@ export default class Plugin extends Patch{
 			})
 		)
 		if(d["loading gif"]){
-			var image = document.createElement("img")
-			image.crossOrigin = "Anonymous"
-			var promise = pageEvents.load(image)
-			image.src = assets.image["dancing-don"].src + "?anonymous"
-			promise = promise.then(() => image, () => {}).then(image => {
-				if(image){
-					var canvas = document.createElement("canvas")
-					canvas.width = image.width
-					canvas.height = image.height
-					var ctx = canvas.getContext("2d")
-					ctx.drawImage(image, 0, 0)
-					return new Promise(resolve => {
-						try{
-							canvas.toBlob(resolve)
-						}catch(e){
-							resolve()
-						}
-					}).then(blob => {
-						if(blob){
-							var image = document.createElement("img")
-							var promise = pageEvents.load(image)
-							image.id = "dancing-don2.gif"
-							image.src = URL.createObjectURL(blob)
-							return promise.then(() => {
-								loader.assetsDiv.appendChild(image)
-								this.newDancingDon = image
-								this.addEdits(
-									new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
-								)
-							}, () => {})
-						}
-					})
+			var image = assets.image["dancing-don"]
+			var canvas = document.createElement("canvas")
+			canvas.width = image.width
+			canvas.height = image.height
+			var ctx = canvas.getContext("2d")
+			ctx.drawImage(image, 0, 0)
+			var promise = new Promise(resolve => {
+				try{
+					canvas.toBlob(resolve)
+				}catch(e){
+					resolve()
+				}
+			}).then(blob => {
+				if(blob){
+					var image = document.createElement("img")
+					var promise = pageEvents.load(image)
+					image.id = "dancing-don2.gif"
+					image.src = URL.createObjectURL(blob)
+					return promise.then(() => {
+						loader.assetsDiv.appendChild(image)
+						this.newDancingDon = image
+						this.addEdits(
+							new EditValue(assets.image, "dancing-don").load(() => this.newDancingDon)
+						)
+					}, () => Promise.resolve())
 				}
 			})
 		}else{
 			var promise = Promise.resolve()
 		}
-		promise.then(() => {
-			var css = ""
+		return promise.then(() => {
+			var css = []
 			var playState = []
 			if(d["song select background"])
 				playState.push("#song-select")
@@ -258,97 +251,77 @@ export default class Plugin extends Patch{
 				playState.push("#layer2")
 			if(d["title screen proceed"])
 				playState.push("#title-proceed")
-			if(d["results tetsuo and hana"]){
-				playState.push("#tetsuo")
-				playState.push("#tetsuo-in")
-				playState.push("#hana")
-				playState.push("#hana-in")
-			}
-			if(d["results mikoshi"]){
-				playState.push("#mikoshi")
-				playState.push("#mikoshi-in")
-			}
-			if(playState.length){
-				css += playState.join(",") + `{
-					animation-play-state: paused !important;
-				}`
-			}
+			if(d["results tetsuo and hana"])
+				playState.push("#tetsuo", "#tetsuo-in", "#hana", "#hana-in")
+			if(d["results mikoshi"])
+				playState.push("#mikoshi", "#mikoshi-in")
+			if(playState.length)
+				css.push(loader.cssRuleset({
+					[playState.join(", ")]: {
+						"animation-play-state": "paused !important"
+					}
+				}))
 			var animation = []
-			if(d["highlight"]){
-				animation.push(".setting-box")
-				animation.push(".setting-value")
-			}
+			if(d["highlight"])
+				animation.push(".setting-box", ".setting-value")
 			if(d["results mikoshi"])
 				animation.push("#mikoshi-out")
-			if(d["results flowers"]){
-				animation.push("#flowers1-in")
-				animation.push("#flowers2-in")
-			}
-			if(animation.length){
-				css += animation.join(",") + `{
-					animation: none !important;
-				}`
-			}
+			if(d["results flowers"])
+				animation.push("#flowers1-in", "#flowers2-in")
+			if(animation.length)
+				css.push(loader.cssRuleset({
+					[animation.join(", ")]: {
+						"animation": "none !important"
+					}
+				}))
 			var transition = []
 			if(d["song select background fade"])
 				transition.push("#song-select")
 			if(d["dropzone fade"])
 				transition.push("#dropzone")
-			if(d["results tetsuo and hana"]){
-				transition.push("#tetsuo")
-				transition.push("#hana")
-			}
-			if(d["results flowers"]){
-				transition.push("#flowers1")
-				transition.push("#flowers2")
-			}
+			if(d["results tetsuo and hana"])
+				transition.push("#tetsuo", "#hana")
+			if(d["results flowers"])
+				transition.push("#flowers1", "#flowers2")
 			if(transition.length){
-				css += transition.join(",") + `{
-					transition: none !important;
-				}`
+				css.push(loader.cssRuleset({
+					[transition.join(", ")]: {
+						"transition": "none !important"
+					}
+				}))
 			}
-			if(d["highlight"]){
-				css += `
-				.view-content:not(:hover) .setting-box.selected,
-				.setting-box:hover{
-					border-color: #ff0;
-				}
-				.setting-value.selected{
-					border-color: #e29e06;
-				}`
-			}
-			if(d["results flowers"]){
-				css += `
-				#tetsuohana.dance #flowers1-in,
-				#tetsuohana.dance #flowers2-in{
-					background-position-y: calc(-318px * var(--scale)) !important;
-				}`
-			}
-			if(d["results fade out"]){
-				css += `
-				#fade-screen{
-					display: none;
-				}`
-			}
-			if(d["loading gif"]){
-				if(this.newDancingDon){
-					css += `
-					#loading-don{
-						background-image: url("${this.newDancingDon.src}");
-					}`
-				}else{
-					css += `
-					#loading-don{
-						background-image: none;
-					}`
-				}
-			}
-			if(css){
+			if(d["highlight"])
+				css.push(loader.cssRuleset({
+					".view-content:not(:hover) .setting-box.selected, .setting-box:hover": {
+						"border-color": "#ff0"
+					},
+					".setting-value.selected": {
+						"border-color": "#e29e06"
+					}
+				}))
+			if(d["results flowers"])
+				css.push(loader.cssRuleset({
+					"#tetsuohana.dance #flowers1-in, #tetsuohana.dance #flowers2-in": {
+						"background-position-y": "calc(-318px * var(--scale)) !important"
+					}
+				}))
+			if(d["results fade out"])
+				css.push(loader.cssRuleset({
+					"#fade-screen": {
+						"display": "none"
+					}
+				}))
+			if(d["loading gif"])
+				css.push(loader.cssRuleset({
+					"#loading-don": {
+						"background-image": this.newDancingDon ? `url("${this.newDancingDon.src}")` : "none"
+					}
+				}))
+			if(css.length){
 				this.style = document.createElement("style")
-				this.style.appendChild(document.createTextNode(css))
+				this.style.appendChild(document.createTextNode(css.join("\n")))
 			}
 		})
-		return promise
 	}
 	start(){
 		if(this.style){
