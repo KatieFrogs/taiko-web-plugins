@@ -1,10 +1,11 @@
 export default class Plugin extends Patch{
 	name = "Old Song List"
-	version = "22.03.07"
+	version = "22.03.26"
 	description = "Restores the default taiko.bui.pm song list to show non-custom songs"
 	author = "Katie Frogs"
 	
 	load(){
+		this.categoriesDefault = assets.categoriesDefault ? assets.categoriesDefault.slice() : assets.categories.slice()
 		this.oldLoader = plugins.pluginMap.ese
 		if(this.oldLoader){
 			this.oldHide = this.oldLoader.hide
@@ -54,12 +55,18 @@ export default class Plugin extends Patch{
 			if(this.newLoader){
 				if(this.oldLoader.started){
 					this.oldLoader.stop()
+					assets.categories = this.categoriesDefault
 					this.newLoader.start()
 				}
 				if(!this.oldHide){
 					this.oldLoader.hide = true
 					this.newLoader.hide = false
 				}
+				setTimeout(() => {
+					if(assets.categories_ese){
+						assets.categories = gameConfig.ese ? assets.categories_ese : assets.categoriesDefault
+					}
+				})
 			}
 		})
 	}
@@ -68,12 +75,18 @@ export default class Plugin extends Patch{
 			if(this.newLoader){
 				if(this.newLoader.started){
 					this.newLoader.stop()
+					assets.categories = this.categoriesDefault
 					this.oldLoader.start()
 				}
 				if(!this.oldHide){
 					this.newLoader.hide = true
 					this.oldLoader.hide = false
 				}
+				setTimeout(() => {
+					if(assets.categories_ese){
+						assets.categories = gameConfig.ese ? assets.categories_ese : assets.categoriesDefault
+					}
+				})
 			}
 		})
 	}
