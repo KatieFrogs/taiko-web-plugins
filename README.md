@@ -59,8 +59,12 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
   - (ja) [BPMを表示する](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/show-bpm.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/show-bpm.taikoweb.js)  
     ゲーム中のBPMを表示します
 
-- [**Example Plugin**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/example-plugin.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/example-plugin.taikoweb.js)  
-  Replaces the judge score with great/cool/miss
-
 - [**Display Game Cache**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/display-game-cache.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/display-game-cache.taikoweb.js)  
   Appends cached assets below the game
+
+### Examples for Developers
+- [**Language: English**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js)  
+  Example language plugin for translators
+
+- [**Example Plugin**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/example-plugin.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/example-plugin.taikoweb.js)  
+  Replaces the judge score with great/cool/miss
