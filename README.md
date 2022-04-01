@@ -42,6 +42,12 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
   Turn off most of the animated elements in the game
 
 ### For Fun
+- [**Karaoke Mode**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js)  
+  Instrumental and Vocal song modes for taiko.bui.pm
+  - (ja) [**カラオケモード**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js)  
+  - (cn, tw) [**卡拉OK模式**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js)  
+  - (ko) [**가라오케 모드**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/karaoke-mode.taikoweb.js)  
+
 - [**Big OK**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js)  
   When you get an OK judge score, the whole screen becomes a big OK
 
