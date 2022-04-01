@@ -1,23 +1,23 @@
 ﻿export default class Plugin extends Patch{
 	name = "Language: French"
 	name_lang = {
-		fr: "Langue : Français"
+		fr: "Langue: Français"
 	}
-	version = "22.03.11"
+	version = "22.03.30"
 	description = ""
-	author = "Animenosekai, Katie Frogs"
+	author = "Nameless, lilyuwuu"
 	
 	strings = {
 		id: "fr",
 		name: "Français",
 		regex: /^fr$|^fr-/,
 		font: "TnT, Meiryo, sans-serif",
-		intl: "fr",
+		intl: "fr-CA",
 		preferEn: true,
 		
 		taikoWeb: "Taiko Web",
-		titleProceed: "Appuyez sur Entrée!",
-		titleDisclaimer: "Ce simulateur non-officiel n'est pas affilié à BANDAI NAMCO.",
+		titleProceed: "Cliquez ou appuyez sur ENTRÉE!",
+		titleDisclaimer: "Ce simulateur non-officiel n'a pas d'affiliation avec BANDAI NAMCO.",
 		titleCopyright: null,
 		selectSong: "Choix de la chanson",
 		selectDifficulty: "Choix de la difficulté",
@@ -25,27 +25,27 @@
 		random: "Aléatoire",
 		randomSong: "Chanson Aléatoire",
 		howToPlay: "Comment Jouer",
-		aboutSimulator: "A propos du Simulateur",
-		gameSettings: "Paramètres",
-		songOptions: "Paramètres de la chanson",
+		aboutSimulator: "À Propos du Simulateur",
+		gameSettings: "Paramètres de jeu",
+		songOptions: "Options de Chanson",
 		none: "Aucun",
-		auto: "Automatique",
-		netplay: "Jouer en Ligne",
+		auto: "Auto",
+		netplay: "Netplay",
 		easy: "Facile",
 		normal: "Normal",
 		hard: "Difficile",
 		oni: "Extrême",
-		songBranch: "Notes divergentes",
+		songBranch: "Notes Divergentes",
 		defaultName: "Don-chan",
 		default2PName: "Katsu-chan",
-		notLoggedIn: "Non connecté",
-		sessionStart: "Commencer une Partie en Ligne!",
-		sessionEnd: "Finir la Partie en Ligne",
-		scoreSaveFailed: "Connexion au serveur impossible, votre score n'a pas été sauvegardé.\n\nReconnectez-vous ou rafraîchissez la page pour réessayer de sauvegarder.",
-		loadSongError: "Un problème est survenue lors du chargement de la chanson %s avec l'ID %s.\n\n%s",
-		accessNotGrantedError: null,
+		notLoggedIn: "Pas connecté(e)",
+		sessionStart: "Commencer une Session en Ligne!",
+		sessionEnd: "Finir Session en Ligne",
+		scoreSaveFailed: "Connection au serveur échouée, votre score ne sera pas sauvegardé.\n\nVeuillez vous connecter ou rafraîchissez la page pour renvoyer votre score.",
+		loadSongError: "La chanson %s avec l'ID %s ne pouvait pas être chargée.\n\n%s",
+		accessNotGrantedError: "La permission d'accéder le fichier ne pouvait pas être autorisée",
 		loading: "Chargement...",
-		waitingForP2: "En attente d'un autre joueur...",
+		waitingForP2: "Attente de l'autre joueur...",
 		cancel: "Annuler",
 		note: {
 			don: "Don",
@@ -64,37 +64,37 @@
 		},
 		combo: "Combo",
 		clear: "Terminé",
-		good: "BIEN",
+		good: "BON",
 		ok: "OK",
 		bad: "MAUVAIS",
 		branch: {
 			normal: "Normal",
-			advanced: "Professionnel",
+			advanced: "Profesionnel",
 			master: "Maître"
 		},
 		pauseOptions: [
 			"Continuer",
-			"Réessayer",
-			"Retour au choix de la chanson"
+			"Recommencer",
+			"Retour au choix de chanson"
 		],
 		results: "Résultats",
 		points: "pts",
 		maxCombo: "Combo MAX",
-		drumroll: "Roul. de tambour",
-		errorOccured: "Une erreur est survenue, merci de rafraîchir la page",
+		drumroll: "Roulements",
+		errorOccured: "Une erreur s'est produite, veuillez rafraîchir la page",
 		tutorial: {
 			basics: [
 				"Tu dois tambouriner au moment où la note passe sur le cadre!",
-				"Pour les notes rouges, tambourine la surface (%s ou %s)...",
-				"...et pour les notes bleues, tambourine le rebord! (%s ou %s)",
-				"Les manettes USB sont aussi supportés!"
+				"Pour les notes rouges, frappe la surface du tambour (%s or %s)...",
+				"...et pour les notes bleues, frappe le rebord! (%s or %s)",
+				"Les manettes USB sont également supportés!"
 			],
-			otherControls: "Autres Contrôles",
+			otherControls: "D'autres contrôles:",
 			otherTutorial: [
-				"%s — mettre en pause",
-				"%s et %s pendant la sélection d'une chanson — changer de catégorie",
-				"%s pendant la sélection d'une difficulté — activer le mode automatique",
-				"%s pendant la sélection d'une difficulté — activer le mode 2 Joueurs"
+				"%s — mettre jeu en pause",
+				"%s et %s pendant la sélection d'une chanson — naviguer les catégories",
+				"%s pendant la sélection d'une difficulté — activer mode Automatique",
+				"%s pendant la sélection d'une difficulté — activer mode 2J"
 			],
 			ok: "OK",
 			key: {
@@ -102,24 +102,24 @@
 				shift: "⇧ MAJ",
 				leftArrow: "←",
 				rightArrow: "→",
-				esc: "ÉCHAP",
+				esc: "ÉCHAP.",
 				join: "+",
-				or: " ou "
+				or: " où "
 			}
 		},
 		about: {
 			bugReporting: [
-				"Ce simulateur est encore en phase de développement.",
-				"Merci de signaler tout bug que vous trouvez.",
-				"Vous pouvez les signaler depuis notre projet Git ou par email."
+				"Ce simulateur est encore en cours de développement.",
+				"Veuillez rapporter tout sorte de bug que vous trouvez.",
+				"Vous pouvez rapporter les bugs soit via notre repositoire Git ou par e-mail."
 			],
-			diagnosticWarning: "Assurez-vous d'inclure les choses suivantes!",
-			issueTemplate: "###### Décrivez le problem que vous avez ci-dessous. Merci d'inclure une capture d'écran et les informations de diagnostique.",
+			diagnosticWarning: "Soyez certain d'inclure les données diagnostiques suivantes!",
+			issueTemplate: "###### Décrivez le problème que vous avez ci-dessous. Veuillez inclure une capture d'écran et l'information diagnostique.",
 			issues: "Problèmes"
 		},
 		session: {
 			multiplayerSession: "Session Multijoueur",
-			linkTutorial: "Partagez ce lien avec vos amis pour jouer ensemble! Ne quittez pas cet écran pendant qu'ils rejoignent.",
+			linkTutorial: "Partagez ce lien avec votre ami pour commencer à jouer ensemble! Ne quittez pas cet écran pendant qu'il se joint à toi.",
 			cancel: "Annuler"
 		},
 		settings: {
@@ -128,23 +128,23 @@
 			},
 			resolution: {
 				name: "Résolution du Jeu",
-				high: "Elevé",
+				high: "Haute",
 				medium: "Moyen",
-				low: "Faible",
-				lowest: "Très Faible"
+				low: "Basse",
+				lowest: "Plus basse"
 			},
 			touchAnimation: {
-				name: "Animation du Toucher"
+				name: "Animation tactile"
 			},
 			keyboardSettings: {
-				name: "Paramètres du Clavier",
-				ka_l: "Rebord Gauche",
+				name: "Paramètres du Jeu",
+				ka_l: "Côté Gauche",
 				don_l: "Surface Gauche",
 				don_r: "Surface Droite",
-				ka_r: "Rebord Droite"
+				ka_r: "Côté Droit"
 			},
 			gamepadLayout: {
-				name: "Réglage du type de manette",
+				name: "Configuration de la Manette",
 				a: "Type A",
 				b: "Type B",
 				c: "Type C"
@@ -152,146 +152,164 @@
 			latency: {
 				name: "Latence",
 				value: "Audio: %s, Vidéo: %s",
-				calibration: "Calibrage de la Latence",
+				calibration: "Calibration de la Latence",
 				audio: "Audio",
 				video: "Vidéo",
 				drumSounds: "Sons du Tambour"
 			},
 			easierBigNotes: {
-				name: "Grosses Notes plus Simples"
+				name: "Notes Grandes Faciles:"
 			},
 			showLyrics: {
-				name: "Afficher les Paroles"
+				name: "Montrer Paroles"
 			},
 			on: "Activé",
 			off: "Désactivé",
-			default: "Réinitialiser",
+			default: "Remettre à Défauts",
 			ok: "OK"
 		},
 		calibration: {
-			title: "Calibrage de la Latence",
+			title: "Calibration de la Latence",
 			ms: "%sms",
-			back: "Retour aux Paramètres",
-			retryPrevious: "Réessayer le Précédent",
+			back: "Retourner aux Paramètres",
+			retryPrevious: "Réessayer Précédent",
 			start: "Commencer",
 			finish: "Terminer",
 			audioHelp: {
-				title: "Calibrage de la Latence Audio",
-				content: "Ecoutez la musique qui se joue en fond.\n\nFrappez la surface du tambour (%s ou %s) en rythme!",
-				contentAlt: "Ecoutez la musique qui se joue en fond.\n\nFrappez la surface du tambour en rythme!"
+				title: "Calibration de la Latence Audio",
+				content: "Écoute le son qui joue dans l'arrière-plan.\n\nFrappe la surface du tambour au rythme (%s or %s) pendant que vous l'entendiez!",
+				contentAlt: "Écoute le son qui joue dans l'arrière-plan.\n\nFrappe la surface du tambour au rythme pendant que vous l'entendiez"
 			},
-			audioComplete: "Calibrage de la Latence Audio terminée!",
+			audioComplete: "Calibration de la Latence Audio complétée!",
 			videoHelp: {
-				title: "Calibrage de la Latence Vidéo",
-				content: "Cette fois-ci il n'y aura pas de son.\n\nA la place, regardez les notes sur le cadre et frappez le tambour quand elles apparaissent!"
+				title: "Calibration de la Latence Vidéo",
+				content: "Cette fois-ci, il n'y aura pas de son.\n\nAu lieu de cela, surveillez les notes qui clignotent sur le cadre en forme de cercle, frappez le tambour lorsqu'elles apparaissent!"
 			},
-			videoComplete: "Calibrage de la Latence Vidéo terminée!",
+			videoComplete: "Calibration de la Latence Vidéo complétée!",
 			results: {
-				title: "Résultats de la Calibration de la Latence",
-				content: "Latence Audio: %s\nLatence Vidéo: %s\n\nVous pouvez configurer ces latences dans les paramètres."
+				title: "Résultats de calibration de la latence",
+				content: "Latence sonore: %s\nLatence vidéo: %s\n\nVous pouvez modifier ces chiffres de latence dans les paramètres."
 			}
 		},
 		account: {
-			username: "Nom d'Utilisateur",
-			enterUsername: "Entrez votre Nom d'Utilisateur",
-			password: "Mot de Passe",
-			enterPassword: "Entrez votre Mot de Passe",
-			repeatPassword: "Réécrivez votre Mot de Passe",
-			remember: "Se Souvenir de Moi",
+			username: "Nom d'utilisateur",
+			enterUsername: "Entrer nom d'util",
+			password: "Mot de passe",
+			enterPassword: "Entrer mot de passe",
+			repeatPassword: "Répéter mot de passe",
+			remember: "Se souvenir de moi",
 			login: "Se connecter",
-			register: "S'inscrire",
+			register: "Enregistrer",
 			privacy: "Confidentialité",
-			registerAccount: "Créer un Compte",
-			passwordsDoNotMatch: "Les Mots de Passe ne correspondent pas",
-			newPasswordsDoNotMatch: "Les nouveaux Mots de Passe ne correspondent pas",
-			cannotBeEmpty: "%s ne peut être vide",
-			error: "Une erreur est survenue lors du traitement de votre requête",
-			logout: "Se Déconnecter",
+			registerAccount: "Enregistrer Compte",
+			passwordsDoNotMatch: "Les mots de passe ne correspondent pas",
+			newPasswordsDoNotMatch: "Les nouv. mot de passes ne correspond pas",
+			cannotBeEmpty: "%s ne peut pas être vide",
+			error: "Une erreur s'est produite lors de votre requête",
+			logout: "Déconnecter",
 			back: "Retour",
 			cancel: "Annuler",
 			save: "Sauvegarder",
-			displayName: "Nom Affiché",
+			displayName: "Nom montré",
 			customdon: {
 				bodyFill: "Corps",
 				faceFill: "Visage",
 				reset: "Réinitialiser"
 			},
-			changePassword: "Changer le Mot de Passe",
+			changePassword: "Changer mot de passe",
 			currentNewRepeat: [
 				"Mot de Passe Actuel",
 				"Nouveau Mot de Passe",
-				"Réécrivez le Nouveau Mot de Passe"
+				"Répéter Nouveau Mot de Passe"
 			],
-			deleteAccount: "Supprimer le Compte",
-			verifyPassword: "Vérifiez le Mot de Passe pour supprimer ce compte"
+			deleteAccount: "Supprimer Compte",
+			verifyPassword: "Vérifiez votre mot de passe pour confirmer la suppression du compte"
 		},
 		serverError: {
-			not_logged_in: "Non connecté",
-			invalid_username: "Nom d'Utilisateur invalide, un nom d'utilisateur ne peut contenir que des lettres, des chiffres et des underscores, et doit comporter entre 3 et 20 caractères",
-			username_in_use: "Un utilisateur existe déjà avec ce nom d'utilisateur",
-			invalid_password: "Impossible d'utiliser ce Mot de Passe, vérifiez qu'il fait au moins 6 caractères",
-			invalid_username_password: "Nom d'Utilisateur ou Mot de Passe Invalide",
-			invalid_display_name: "Impossible d'utiliser ce nom, vérifiez qu'il ne fait pas plus de 25 caractères",
-			invalid_don: "Echec de la sauvegarde de votre Don",
-			current_password_invalid: "Le Mot de Passe actuel ne correspond pas",
-			invalid_new_password: "Impossible d'utiliser ce Mot de Passe, vérifiez qu'il fait au moins 6 caractères",
-			verify_password_invalid: "Le Mot de Passe de vérification ne correspond pas",
-			invalid_csrf: "Le Jeton de Sécurité a expiré. Merci de rafraîchir la page."
+			not_logged_in: "Non connecté(e)",
+			invalid_username: "Nom d'utilisateur invalide, un nom d'util. peut seulement contenir des chiffres, des lettres et des traits de soulignement, et doit comporter entre 3 et 20 caractères",
+			username_in_use: "Un utilisateur existe déjà avec ce nom",
+			invalid_password: "Impossible d'utiliser ce mot de passe, veuillez vérifier que votre mot de passe comporte au moins 6 caractères",
+			invalid_username_password: "Nom d'util. ou mot de passe est invalide",
+			invalid_display_name: "Impossible d'utiliser ce nom, veuillez vérifier que votre nouveau nom comporte au maximum 25 caractères",
+			invalid_don: "La sauvegarde du Don perso a échoué",
+			current_password_invalid: "Le mot de passe actuel ne correspond pas",
+			invalid_new_password: "Impossible d'utiliser ce mot de passe, veuillez vérifier que votre nouveau mot de passe comporte au moins 6 caractères",
+			verify_password_invalid: "Le mot de passe de vérification ne correspond pas",
+			invalid_csrf: "Jeton de sécurité expiré. Veuillez rafraîchir la page."
 		},
 		browserSupport: {
-			browserWarning: "Vous utilisez un navigateur non supporté (%s)",
+			browserWarning: "Vous utilisez un navigateur non pris en charge (%s)",
 			details: "Détails...",
-			failedTests: "Les tests suivants ont échoués:",
-			supportedBrowser: "Merci d'utiliser un navigateur supporté comme %s"
+			failedTests: "Les tests suivants ont échoué:",
+			supportedBrowser: "Veuillez utiliser un navigateur pris en charge, tel que %s"
 		},
 		creative: {
 			creative: "Créatif",
 			maker: "Créateur:"
 		},
-		withLyrics: "Avec les Paroles",
+		withLyrics: "Avec paroles",
 		customSongs: {
-			title: "Liste des chansons personnalisées",
-			default: "Liste des chansons par défaut",
+			title: "Chansons Personnalisées",
+			default: "Chansons Créatives",
 			description: [
-				"Sélectionnez un dossier avec des fichiers chart Taiko dans le format TJA pour jouer avec des chansons personnalisées!"
+				"Choisissez un dossier contenant des fichiers Taiko au format TJA pour jouer sur une liste de chansons personnalisées!"
 			],
-			localFolder: "Dossier local",
+			localFolder: "Fichier Local...",
 			gdriveFolder: "Google Drive...",
-			gdriveAccount: "Changer de compte",
-			dropzone: "Déposez les fichiers ici",
-			importError: "Erreur d'import",
-			noSongs: "Aucun fichier Taiko Chart trouvé dans le dossier sélectionné."
+			gdriveAccount: "Changer de Compte...",
+			dropzone: "Mettre fichiers ici",
+			importError: "Erreur d'Importation",
+			noSongs: "Il n'y a pas de fichiers TJA qui sont trouvés."
 		},
 		gpicker: {
-			locale: "fr",
+			locale: "fr-ca",
 			myDrive: "Mon Drive",
-			starred: "Suivis",
+			starred: "Marqués d'une étoile",
 			sharedWithMe: "Partagés avec moi",
-			authError: "Erreur d'authentification: %s",
+			authError: "Erreur d'auth: %s",
 			cookieError: "Cette fonction nécessite des cookies tiers."
 		},
 		plugins: {
-			title: null,
-			unloadAll: null,
-			warning: null,
-			plugin: null,
-			author: null,
-			version: null
+			title: "Plugins",
+			unloadAll: "Décharger Tout",
+			warning: "Vous êtes sur le point de charger %s. Les plugins ne doivent être chargés que si vous leur faites confiance. Continuer?",
+
+			plugin: {
+				one: "%s plugin",
+				other: "%s plugins",
+				many: "%s plugins"
+			},
+			author: "Par %s",
+			version: "Version %s",
+			browse: "Parcourir...",
+			noPlugins: "Aucun fichier plugin .taikoweb.js n'a été trouvé dans la liste de fichiers fournie."
 		},
 		search: {
-			search: null,
-			searchInput: null,
-			noResults: null,
-			tip: null,
-			tips: null
+			search: "Recherche de Chansons",
+			searchInput: "Rechercher pour des chansons...",
+			noResults: "Pas de résultat(s) trouvé(s).",
+			tip: "Astuce:",
+			tips: [
+				"Ouvrez la fenêtre de recherche en appuyant sur CTRL+F!",
+				"Mélangez et associez autant de filtres de recherche que vous le souhaitez!",
+				"Triez par genre en utilisant le mot-clé \"genre:\"! (p. ex. \"genre:variety\", \"genre:namco\")",
+				"Utilisez des filtres comme \"oni:10\" pour rechercher des chansons avec une difficulté particulière!",
+				"Les filtres de difficulté prennent également en charge les portées! Essayez \"ura:1-5\"!",
+				"Vous voulez voir vos combos complets? Essayez \"gold:any\", \"gold:oni\", etc.!",
+				"Vous voulez seulement voir des chansons créatives? Utilisez le filtre \"creative:yes\"!",
+				"Trouvez des chansons avec les paroles activées en utilisant le filtre \"lyrics:yes\"!",
+				"Vous avez envie d'essayer quelque chose de nouveau? Utilisez le filtre \"played:no\" pour seulement voir des chansons que vous n'avez pas encore jouées!",
+				"Vous recherchez des chansons créatives d'un créateur précis? Utilisez le filtre \"maker:<name>\"!"
+			]
 		},
 		categories: {
 			"Pop": "Pop",
 			"Anime": "Anime",
-			"VOCALOID™ Music": "VOCALOID™ Music",
-			"Variety": "Variétés",
+			"VOCALOID™ Music": "Musique VOCALOID™",
+			"Variety": "Variété",
 			"Classical": "Classique",
-			"Game Music": "Música de juegos",
+			"Game Music": "Musique de Jeu",
 			"NAMCO Original": "NAMCO Original"
 		}
 	}
