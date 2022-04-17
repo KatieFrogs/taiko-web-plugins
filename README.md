@@ -41,12 +41,16 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Disable Animations**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js)  
   Turn off most of the animated elements in the game
 
+### Custom Songs
+- [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js)  
+  Adds support for green notes (G) and ad-lib notes (F) in custom charts
+
+- [**Fumen File Format**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js)  
+  Adds support for using Fumen files in the custom song list
+
 ### For Fun
 - [**Big OK**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js)  
   When you get an OK judge score, the whole screen becomes a big OK
-
-- [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/green-notes.taikoweb.js)  
-  Adds support for green notes (G) and ad-lib notes (F) in custom charts
 
 ### Debugging and Testing
 - [**Millisecond Accuracy**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/millisecond-accuracy.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/millisecond-accuracy.taikoweb.js)  
