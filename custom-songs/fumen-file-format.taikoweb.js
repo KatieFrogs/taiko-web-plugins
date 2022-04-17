@@ -11,6 +11,16 @@ export default class Plugin extends Patch{
 				`this.musicInfoXml = this.otherFiles.musicInfoXml || {}
 				this.songStars = this.otherFiles.songStars || {}
 				this.starsRegex = /^\\d+,\\d+,\\d+,\\d+(?:,\\d+)?$/
+				this.duetRegex = /_[enhmx]_[12]\\.bin$/
+				this.notFumen = [
+					"tuning.bin",
+					"tuning_ext.bin",
+					"music_attribute.bin",
+					"music_order.bin",
+					"musicinfo.bin",
+					"wordlist.bin",
+					"songinfo.bin"
+				]
 				this.nshPreview = this.otherFiles.nshPreview || {}
 				this.otherFilenames = this.otherFiles.otherFilenames || {}
 				this.binSongs = {}
@@ -23,7 +33,8 @@ export default class Plugin extends Patch{
 				`, 'this.otherFiles[path] = file')
 				str = plugins.insertBefore(str,
 				`if(name.endsWith(".bin")){
-					if(name !== "tuning.bin" && name !== "tuning_ext.bin" && !path.slice(0, -name.length).endsWith("/duet/")){
+					var pathNoName = path.slice(0, -name.length)
+					if(this.notFumen.indexOf(name) === -1 && !pathNoName.endsWith("/duet/") && pathNoName.indexOf("/fumen_hitnarrow/") === -1 && pathNoName.indexOf("/fumen_hitwide/") === -1 && !this.duetRegex.test(name)){
 						this.binFiles.push({
 							file: file
 						})
