@@ -45,6 +45,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js)  
   Adds support for green notes (G) and ad-lib notes (F) in custom charts
 
+- [**Custom Barline Scroll**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js)  
+  Adds #BARLINESCROLL to the tja format, which can be used to set independent speed values on the measure lines, can be set to a floating point value or off
+
 - [**Fumen File Format**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js)  
   Adds support for using Fumen files in the custom song list
 
