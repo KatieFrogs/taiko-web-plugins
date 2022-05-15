@@ -48,6 +48,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Custom Barline Scroll**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js)  
   Adds #BARLINESCROLL to the tja format, which can be used to set independent speed values on the measure lines, can be set to a floating point value or off
 
+- [**Loading Background**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/loading-background.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/loading-background.taikoweb.js)  
+  Shows a custom loading background if a loading.png file is in the same directory as the chart
+
 - [**Fumen File Format**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js)  
   Adds support for using Fumen files in the custom song list
 
