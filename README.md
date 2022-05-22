@@ -16,6 +16,10 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Rainbow Crown**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/rainbow-crown.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/rainbow-crown.taikoweb.js)  
   Donder-Full Combos will give rainbow crowns
 
+- [**Skip Results in Multiplayer**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/skip-results-in-multiplayer.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/skip-results-in-multiplayer.taikoweb.js)  
+  Enables skipping the results screen in multiplayer, however, the other player will not get to see the full results screen without the plugin
+  - [Userscript version](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/userscripts/skip-results-in-multiplayer.user.js)
+
 ### Song Select
 - [**Change Song Select Speed**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js)  
   Changes the song selection scroll speed
