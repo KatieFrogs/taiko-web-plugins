@@ -2,8 +2,11 @@
 // @name Taiko Web - Skip Results in Multiplayer
 // @namespace taiko-web-plugins
 // @icon https://gitlab.com/uploads/-/system/project/avatar/36006078/taiko-web-plugins.png?width=64
-// @version 22.5.22
+// @version 22.5.23
+// @author Katie Frogs
 // @description Enables skipping the results screen in multiplayer, however, the other player will not get to see the full results screen without the plugin
+// @homepage https://github.com/KatieFrogs/taiko-web-plugins
+// @supportURL https://github.com/KatieFrogs/taiko-web-plugins/issues
 // @match https://taiko.bui.pm/
 // @grant none
 // ==/UserScript==
@@ -60,8 +63,8 @@ if(window.loader && window.loader.ready){
 function skipResultsInMultiplayer(){
 return class Plugin extends Patch{
 	name = "Skip Results in Multiplayer"
-	version = "22.05.22"
-	description = "Enables skipping the results screen in multiplayer. However, the other player will not get to see the full results screen without the plugin."
+	version = "22.05.23"
+	description = "Enables skipping the results screen in multiplayer, however, the other player will not get to see the full results screen without the plugin"
 	author = "Katie Frogs"
 	
 	load(){
@@ -116,7 +119,6 @@ return class Plugin extends Patch{
 		),
 		this.addEdits(
 			new EditFunction(Scoresheet.prototype, "toSongsel").load(str => {
-				str = plugins.strReplace(str, '!p2.session || ', ``)
 				str = plugins.insertAfter(str, 'if(!fromP2', ` && !p2.session`)
 				return str + `
 				if(p2.session && !fromP2){

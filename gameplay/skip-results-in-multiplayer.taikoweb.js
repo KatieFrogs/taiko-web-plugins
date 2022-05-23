@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Skip Results in Multiplayer"
-	version = "22.05.22"
+	version = "22.05.23"
 	description = "Enables skipping the results screen in multiplayer, however, the other player will not get to see the full results screen without the plugin"
 	author = "Katie Frogs"
 	
@@ -56,7 +56,6 @@ export default class Plugin extends Patch{
 		),
 		this.addEdits(
 			new EditFunction(Scoresheet.prototype, "toSongsel").load(str => {
-				str = plugins.strReplace(str, '!p2.session || ', ``)
 				str = plugins.insertAfter(str, 'if(!fromP2', ` && !p2.session`)
 				return str + `
 				if(p2.session && !fromP2){
