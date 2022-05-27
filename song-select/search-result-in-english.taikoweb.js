@@ -1,5 +1,5 @@
 export default class Plugin extends Patch {
-    name = "Search Result In English"
+    name = "Show Search Result In English"
     version = "22.05.27"
     description = "Add search english title and subtitle name to result."
     author = "mirusu400"
