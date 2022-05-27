@@ -25,7 +25,7 @@ export default class Plugin extends Patch {
             }),
             new EditFunction(Search.prototype, "perform").load(str => {
                 return plugins.strReplace(str, `return a[1] ? score1 : -Infinity`,
-                    `return a[1] ? score1 : a[2] ? -9999 : a[3] ? -19999 : -Infinity`
+                    `return a[1] ? score1 : a[2] ? -9999 : a[3] ? -10000 : -Infinity`
                 )
             })
         )
