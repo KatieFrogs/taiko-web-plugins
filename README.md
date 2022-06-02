@@ -49,8 +49,8 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js)  
   Adds support for green notes (G) and ad-lib notes (F) in custom charts
 
-- [**Custom Barline Scroll**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barline-scroll.taikoweb.js)  
-  Adds #BARLINESCROLL to the tja format, which can be used to set independent speed values on the measure lines, can be set to a floating point value or off
+- [**Custom Barlines**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barlines.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/custom-barlines.taikoweb.js)  
+  Adds #BARLINESCROLL and #BARLINE to the tja format. #BARLINESCROLL can be used to set independent speed values on the measure lines, can be set to a floating point value or off. #BARLINE can insert measure lines anywhere in the chart.
 
 - [**Loading Background**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/loading-background.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/loading-background.taikoweb.js)  
   Shows a custom loading background if a loading.png file is in the same directory as the chart
