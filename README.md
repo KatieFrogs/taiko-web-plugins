@@ -45,6 +45,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Disable Animations**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js)  
   Turn off most of the animated elements in the game
 
+- [**D-pad Axis Input**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/dpad-axis-input.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/dpad-axis-input.taikoweb.js)  
+  Binds axis input to D-pad for gamepads
+
 ### Custom Songs
 - [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js)  
   Adds support for green notes (G) and ad-lib notes (F) in custom charts
