@@ -1,13 +1,13 @@
 export default class Plugin extends Patch {
 	name = "Custom Ranks"
-	version = "22.05.24"
+	version = "22.06.10"
 	description = "Add customs ranks according to user"
 	author = "Glas"
 
 	//Copy & Paste cases for more users.
 
 	load() {
-	method = `switch(name) {
+		method = `switch(name) {
 				case 'Glas':
 		rank = "Lena";
 		break;
@@ -26,25 +26,25 @@ export default class Plugin extends Patch {
 				str = plugins.insertBefore(str, `${method}`, `this.nameplateCache.get({`)
 				return str
 			}),
-				// Custom Ranks Pre - For GamePlay
-				new EditFunction(View.prototype, "refresh").load(str => {
-					str = plugins.insertBefore(str, `var rank = 'test'
+			// Custom Ranks Pre - For GamePlay
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, `var rank = 'test'
 					`, `var winW = innerWidth`)
-					return str
-				}),
-				// Custom Ranks Pre - For GamePlay 2
-				new EditFunction(View.prototype, "refresh").load(str => {
-					str = plugins.insertBefore(str, `rank: rank,
+				return str
+			}),
+			// Custom Ranks Pre - For GamePlay 2
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, `rank: rank,
 					`, `scale: 0.8,`)
-					return str
-				}),
-				
-				// Custom Ranks - For GamePlay
+				return str
+			}),
 
-				new EditFunction(View.prototype, "refresh").load(str => {
-					str = plugins.insertBefore(str, `${method}`)
-					return str
-				}),
+			// Custom Ranks - For GamePlay
+
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, `${method}`)
+				return str
+			}),
 			// Custom Ranks - For Results screen
 
 
