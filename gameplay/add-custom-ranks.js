@@ -1,6 +1,6 @@
 export default class Plugin extends Patch {
 	name = "Custom Ranks"
-	version = "22.05.24"
+	version = "22.06.10"
 	description = "Add customs ranks according to user"
 	author = "Glas"
 
