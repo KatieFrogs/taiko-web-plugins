@@ -1,9 +1,9 @@
 ﻿export default class Plugin extends Patch{
 	name = "Language: Spanish (Latin America)"
 	name_lang = {
-		es: "Idioma: Español (Latinoamérica)"
+		"es-419": "Idioma: Español (Latinoamérica)"
 	}
-	version = "22.03.03"
+	version = "22.03.11"
 	description = ""
 	author = "Glas, Katie Frogs"
 	
