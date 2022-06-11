@@ -6,7 +6,7 @@ export default class Plugin extends Patch {
 
 
 	//Custom Rank List, edit as you wish.
-	// Don't edit the first one, => case '':
+	// Don't edit case '':
 	method = `switch(name) {
 				case '':
 		rank = "";
@@ -16,6 +16,24 @@ export default class Plugin extends Patch {
 		break;
 				case 'bol':
 		rank = "Charter";
+		break;
+				case 'NotTang':
+		rank = "Rank 1";
+		break;
+				case 'Meowgister':
+		rank = "Charter";
+		break;
+				case 'Dormin':
+		rank = "Spammer";
+		break;
+				case 'colinmcguire':
+		rank = "Makima's Dog";
+		break;
+				case 'sakurada0291':
+		rank = "Summertime Melodies";
+		break;
+				case 'Thusuzzee':
+		rank = "nekos.best";
 		break;
 				case '5':
 		rank = "Charter";
@@ -62,15 +80,13 @@ export default class Plugin extends Patch {
 
 			// Defines rank for gameplay screen
 			new EditFunction(View.prototype, "refresh").load(str => {
-				str = plugins.insertBefore(str, `var rank = 'test'
+				str = plugins.insertBefore(str, `var rank = "test"
 					`, `var winW = innerWidth`)
 				return str
 			}),
-			// Adds rank to gameplay screen (Mobile)
-			new EditFunction(View.prototype, "refresh").load(str => {
-				str = plugins.insertBefore(str, `rank: rank,
 
-					`, `scale: 0.8,`)
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, this.method, `var winH = lastHeight`)
 				return str
 			}),
 			// Inserts rank value into gameplay (Mobile)
@@ -78,10 +94,11 @@ export default class Plugin extends Patch {
 				str = plugins.insertBefore(str, this.method, `				this.draw.nameplate({
 					ctx: ctx,
 					x: 3,
-					y: 3,`)
+					y: 3,
+					scale: 0.8,`)
 				return str
 			}),
-			// Adds rank to gameplay screen (PC)
+			// Adds rank to gameplay screen (Mobile)
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str, `rank: rank,
 
@@ -93,9 +110,22 @@ export default class Plugin extends Patch {
 				str = plugins.insertBefore(str, this.method, `				this.draw.nameplate({
 					ctx: ctx,
 					x: 3,
-					y: 3,`)
+					y: 3,
+					name: name`)
 				return str
 			}),
+			// Adds rank to gameplay screen (PC)
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, `rank: rank,
+
+					`, `					y: 3,
+					name: name,`)
+				return str
+			}),
+
+
+
+
 
 
 		)
