@@ -6,7 +6,11 @@ export default class Plugin extends Patch {
 
 
 	//Custom Rank List, edit as you wish.
+	// Don't edit case '':
 	method = `switch(name) {
+				case '':
+		rank = "";
+		break;
 				case 'Glas':
 		rank = "Lena Admin";
 		break;
@@ -19,6 +23,36 @@ export default class Plugin extends Patch {
 				case 'Meowgister':
 		rank = "Charter";
 		break;
+				case 'Dormin':
+		rank = "Spammer";
+		break;
+				case 'colinmcguire':
+		rank = "Makima's Dog";
+		break;
+				case 'sakurada0291':
+		rank = "Summertime Melodies";
+		break;
+				case 'Thusuzzee':
+		rank = "nekos.best";
+		break;
+				case '5':
+		rank = "Charter";
+		break;
+				case '6':
+		rank = "Charter";
+		break;
+				case '7':
+		rank = "Charter";
+		break;
+				case '8':
+		rank = "Charter";
+		break;
+				case '9':
+		rank = "Charter";
+		break;
+				case '10':
+		rank = "Charter";
+		break;
 	}`
 	load() {
 		this.log("load")
@@ -28,20 +62,20 @@ export default class Plugin extends Patch {
 				str = plugins.insertBefore(str, this.method, `this.nameplateCache.get({`)
 				return str
 			}),
-			// Prepares Custom Rank for Gameplay
+			// Defines rank for gameplay screen
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str, `var rank = 'test'
 					`, `var winW = innerWidth`)
 				return str
 			}),
-			// Prepares Custom Rank for Gameplay 2
+			// Adds rank to gameplay screen (Mobile)
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str, `rank: rank,
+
 					`, `scale: 0.8,`)
 				return str
 			}),
-
-			// Adds Custom Rank to Gameplay
+			// Inserts rank value into gameplay (Mobile)
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str, this.method, `				this.draw.nameplate({
 					ctx: ctx,
@@ -49,6 +83,23 @@ export default class Plugin extends Patch {
 					y: 3,`)
 				return str
 			}),
+			// Adds rank to gameplay screen (PC)
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, `rank: rank,
+
+					`, `scale: 0.8,`)
+				return str
+			}),
+			// Inserts rank value into gameplay (PC)
+			new EditFunction(View.prototype, "refresh").load(str => {
+				str = plugins.insertBefore(str, this.method, `				this.draw.nameplate({
+					ctx: ctx,
+					x: 3,
+					y: 3,`)
+				return str
+			}),
+
+
 			// Prepares Custom Rank for Score Result
 			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
 				str = plugins.insertBefore(str, `var rank = 'test'
