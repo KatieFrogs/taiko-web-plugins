@@ -6,7 +6,7 @@ export default class Plugin extends Patch {
 
 
 	//Custom Rank List, edit as you wish.
-	// Don't edit case '':
+	// Don't edit the first one, => case '':
 	method = `switch(name) {
 				case '':
 		rank = "";
@@ -16,24 +16,6 @@ export default class Plugin extends Patch {
 		break;
 				case 'bol':
 		rank = "Charter";
-		break;
-				case 'NotTang':
-		rank = "Rank 1";
-		break;
-				case 'Meowgister':
-		rank = "Charter";
-		break;
-				case 'Dormin':
-		rank = "Spammer";
-		break;
-				case 'colinmcguire':
-		rank = "Makima's Dog";
-		break;
-				case 'sakurada0291':
-		rank = "Summertime Melodies";
-		break;
-				case 'Thusuzzee':
-		rank = "nekos.best";
 		break;
 				case '5':
 		rank = "Charter";
@@ -57,11 +39,27 @@ export default class Plugin extends Patch {
 	load() {
 		this.log("load")
 		this.addEdits(
-			// Adds custom rank to Song Select
+			// Adds Rank to Song Select
 			new EditFunction(SongSelect.prototype, "redraw").load(str => {
 				str = plugins.insertBefore(str, this.method, `this.nameplateCache.get({`)
 				return str
 			}),
+			// Prepares Custom Rank for Score Result
+			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
+				str = plugins.insertBefore(str, `var rank = 'test'
+					`, `var winW = innerWidth`)
+				// Prepares Custom Rank for Score Result 2
+				str = plugins.insertBefore(str, `rank: rank,
+					`, `name: name,`)
+				// Adds Custom Rank to Score Results
+				str = plugins.insertBefore(str, this.method, `					this.nameplateCache.get({
+						ctx: ctx,
+						x: 259,`)
+				return str
+			}),
+
+			//////// Below needs refactoring/rewrite.
+
 			// Defines rank for gameplay screen
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str, `var rank = 'test'
@@ -99,27 +97,6 @@ export default class Plugin extends Patch {
 				return str
 			}),
 
-
-			// Prepares Custom Rank for Score Result
-			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
-				str = plugins.insertBefore(str, `var rank = 'test'
-					`, `var winW = innerWidth`)
-				return str
-			}),
-			// Prepares Custom Rank for Score Result 2
-			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
-				str = plugins.insertBefore(str, `rank: rank,
-					`, `name: name,`)
-				return str
-			}),
-
-			// Adds Custom Rank to Score Results
-			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
-				str = plugins.insertBefore(str, this.method, `					this.nameplateCache.get({
-						ctx: ctx,
-						x: 259,`)
-				return str
-			}),
 
 		)
 	}
