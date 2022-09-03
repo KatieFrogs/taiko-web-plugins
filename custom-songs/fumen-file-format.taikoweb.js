@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Fumen File Format"
-	version = "22.04.17"
+	version = "22.09.04"
 	description = "Adds support for using Fumen files in the custom song list"
 	author = "Katie Frogs"
 	
@@ -40,7 +40,7 @@ export default class Plugin extends Patch{
 						})
 						this.otherFiles[path] = file
 					}
-				}else `, 'if(name.endsWith(".tja")){')
+				}else `, 'if(name.endsWith(".tja")')
 				str = plugins.insertBefore(str,
 				`name.startsWith("song_") && name.endsWith(".nsh") || `, 'name === "genre.ini"')
 				str = plugins.insertBefore(str,
@@ -379,7 +379,6 @@ export default class Plugin extends Patch{
 		this.vgmExt = [".nus3bank", ".nub", ".acb", ".idsp", ".at3"]
 		
 		var workerScript = await (await fetch("https://katiefrogs.github.io/vgmstream-web/js/cli-worker.js")).text()
-		workerScript = plugins.strReplace(workerScript, '"lib/jszip.min.js"', `"https://katiefrogs.github.io/vgmstream-web/js/lib/jszip.min.js"`)
 		var workerUrl = URL.createObjectURL(new Blob([workerScript], {
 			type: "application/javascript"
 		}))
@@ -744,7 +743,11 @@ export default class Plugin extends Patch{
 			if(addedType){
 				addedType.forEach(callback => {
 					if(data.error){
-						callback.reject(data.error)
+						var error = new Error(data.error.message)
+						for(var i in data.error){
+							error[i] = data.error[i]
+						}
+						callback.reject(error)
 					}else{
 						callback.resolve(data.content)
 					}
@@ -962,24 +965,12 @@ export default class Plugin extends Patch{
 	async vgmDecoder(file){
 		var data = new Uint8Array(await file.arrayBuffer())
 		var name = Math.random() + file.name
-		var outputFilename = Math.random() + "output.wav"
-		await this.cliWorker.send("writeFile", name, data)
-		var output = await this.cliWorker.send("vgmstream", "-I", "-o", outputFilename, "-i", name)
-		await this.cliWorker.send("deleteFile", name)
-		if(output.error){
-			await this.cliWorker.send("deleteFile", outputFilename)
-			throw new Error(output.error.stack)
-		}else{
-			var wavdata = await this.cliWorker.send("readFile", outputFilename)
-			if(wavdata){
-				await this.cliWorker.send("deleteFile", outputFilename)
-				return new Promise((resolve, reject) => {
-					return snd.buffer.audioDecoder(wavdata.buffer, resolve, reject)
-				})
-			}else{
-				throw new Error("vgmstream: Unsupported")
-			}
-		}
+		
+		var output = await this.cliWorker.send("convertFile", data, name, true)
+		
+		return new Promise((resolve, reject) => {
+			return snd.buffer.audioDecoder(output.arrayBuffer, resolve, reject)
+		})
 	}
 	
 	start(){
