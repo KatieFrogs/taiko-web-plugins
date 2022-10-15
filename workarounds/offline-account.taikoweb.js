@@ -1,10 +1,16 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Offline Account"
+	name_lang = {
+		tw: "離線帳號"
+	}
 	version = "22.02.22"
 	description = "Allows setting your name and customizing your Don without logging in"
+	description_lang = {
+		tw: "在未登入的狀態下允許你設定你的名字和自定義你的咚"
+	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		this.offlineAccount = {
 			loggedIn: true,
 			username: "Don-chan",
@@ -15,7 +21,7 @@ export default class Plugin extends Patch{
 			}
 		}
 		this.loadAccount()
-		
+
 		this.addEdits(
 			new EditValue(gameConfig, "accounts").load(() => true),
 			new EditValue(window, "account").load(() => {
@@ -49,9 +55,9 @@ export default class Plugin extends Patch{
 			})
 		)
 	}
-	
-	request(url, obj, get){
-		switch(url){
+
+	request(url, obj, get) {
+		switch (url) {
 			case "account/display_name":
 				this.offlineAccount.username = obj.display_name
 				this.offlineAccount.displayName = obj.display_name
@@ -72,36 +78,36 @@ export default class Plugin extends Patch{
 				})
 		}
 	}
-	saveAccount(){
+	saveAccount() {
 		localStorage.setItem("offlineAccount", JSON.stringify({
 			name: this.offlineAccount.displayName,
 			don: this.offlineAccount.don
 		}))
 	}
-	loadAccount(){
+	loadAccount() {
 		var account = localStorage.getItem("offlineAccount")
-		if(account){
-			try{
+		if (account) {
+			try {
 				account = JSON.parse(account)
-			}catch(e){}
+			} catch (e) { }
 		}
-		if(account){
-			if(account.name){
+		if (account) {
+			if (account.name) {
 				this.offlineAccount.username = account.name
 				this.offlineAccount.displayName = account.name
 			}
-			if(account.don){
-				if(account.don.body_fill){
+			if (account.don) {
+				if (account.don.body_fill) {
 					this.offlineAccount.don.body_fill = account.don.body_fill
 				}
-				if(account.don.face_fill){
+				if (account.don.face_fill) {
 					this.offlineAccount.don.face_fill = account.don.face_fill
 				}
 			}
 		}
 	}
-	
-	unload(){
+
+	unload() {
 		delete this.offlineAccount
 	}
 }

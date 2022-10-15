@@ -1,14 +1,20 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Big OK"
+	name_lang = {
+		tw: "大大的 OK"
+	}
 	version = "22.02.11"
 	description = "When you get an OK judge score, the whole screen becomes a big OK"
+	description_lang = {
+		tw: "當你得到一個 OK 的分數，整個螢幕將會變成一個大大的 OK"
+	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		this.addEdits(
 			new EditFunction(View.prototype, "refresh").load(str => {
 				return plugins.insertBefore(str,
-				`if(this.currentScore.type === 230){
+					`if(this.currentScore.type === 230){
 					this.showOk = true
 				}
 				if(this.showOk && !this.multiplayer){

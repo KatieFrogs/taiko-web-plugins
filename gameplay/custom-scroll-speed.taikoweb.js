@@ -1,27 +1,35 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Custom Scroll Speed"
+	name_lang = {
+		tw: "自定義滾動速度"
+	}
 	version = "22.02.22"
 	description = "Changes the speed the notes scroll at in game"
+	description_lang = {
+		tw: "改變音符在遊戲中滾動的速度"
+	}
 	author = "Katie Frogs"
-	
+
 	scrollRate = 0.5
-	
+
 	strings = {
 		scrollRate: {
 			name: "Scroll Speed Multiplier",
-			name_lang: {},
+			name_lang: {
+				tw: "滾動速度增加器"
+			},
 			description: null,
 			description_lang: {},
 			format: "%sx",
 			format_lang: {}
 		}
 	}
-	
-	load(){
+
+	load() {
 		this.addEdits(
 			new EditFunction(Controller.prototype, "init").load(str => {
 				return plugins.insertAfter(str,
-				'this.view = new View(this)', `
+					'this.view = new View(this)', `
 				if(this.view.getScrollRate() < 1){
 					this.saveScore = false
 				}`)
@@ -40,10 +48,10 @@ export default class Plugin extends Patch{
 			new EditValue(View.prototype, "getScrollRate").load(() => this.getScrollRate.bind(this))
 		)
 	}
-	getScrollRate(){
+	getScrollRate() {
 		return this.scrollRate
 	}
-	settings(){
+	settings() {
 		var str = this.strings.scrollRate
 		return [{
 			name: str.name,

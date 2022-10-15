@@ -1,32 +1,42 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "D-pad Axis Input"
+	name_lang = {
+		tw: "D-pad 軸輸入"
+	}
 	version = "22.06.07"
 	description = "Binds axis input to D-pad for gamepads"
+	description_lang = {
+		tw: "將軸的輸入和遊戲板的 D-pad 結合起來"
+	}
 	author = "Katie Frogs"
-	
+
 	leftRightAxis = 0
 	upDownAxis = 1
-	
+
 	strings = {
 		leftRightAxis: {
-			name: "Left-Right Axis",
+			name: "左右軸",
 			name_lang: {},
 			description: "The number for the left-right axis, can be checked on gamepad-tester.com",
-			description_lang: {}
+			description_lang: {
+				tw: "左右軸的數字，可以到「gamepad-tester.com」查看"
+			}
 		},
 		upDownAxis: {
-			name: "Up-Down Axis",
+			name: "上下軸",
 			name_lang: {},
 			description: "The number for the up-down axis, can be checked on gamepad-tester.com",
-			description_lang: {}
+			description_lang: {
+				tw: "上下軸的數字，可以到「gamepad-tester.com」查看"
+			}
 		}
 	}
-	
-	load(){
+
+	load() {
 		this.addEdits(
 			new EditFunction(Gamepad.prototype, "play").load(str => {
 				return plugins.insertBefore(str,
-				`var leftRightAxis = this.getLeftRightAxis()
+					`var leftRightAxis = this.getLeftRightAxis()
 				var upDownAxis = this.getUpDownAxis()
 				if(axes.length >= leftRightAxis){
 					force.l = force.l || axes[leftRightAxis] <= -0.5
@@ -50,13 +60,13 @@ export default class Plugin extends Patch{
 			new EditValue(Gamepad.prototype, "getUpDownAxis").load(() => this.getUpDownAxis.bind(this))
 		)
 	}
-	getLeftRightAxis(){
+	getLeftRightAxis() {
 		return this.leftRightAxis
 	}
-	getUpDownAxis(){
+	getUpDownAxis() {
 		return this.upDownAxis
 	}
-	settings(){
+	settings() {
 		return Object.keys(this.strings).map(name => {
 			var str = this.strings[name]
 			return {

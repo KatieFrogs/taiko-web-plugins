@@ -1,19 +1,25 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Old Song List"
+	name_lang = {
+		tw: "舊版歌曲列表"
+	}
 	version = "22.03.26"
 	description = "Restores the default taiko.bui.pm song list to show non-custom songs"
+	description_lang = {
+		tw: "恢復預設的 taiko.bui.pm 歌曲列表以顯示非自定義歌曲"
+	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		this.categoriesDefault = assets.categoriesDefault ? assets.categoriesDefault.slice() : assets.categories.slice()
 		this.oldLoader = plugins.pluginMap.ese
-		if(this.oldLoader){
+		if (this.oldLoader) {
 			this.oldHide = this.oldLoader.hide
 			var str = this.oldLoader.module.constructor.toString()
 			str = plugins.insertBefore(str, `export default `, 'class Plugin extends Patch')
 			str = plugins.insertAfter(str, 'new EditValue(assets, "songsDefault', `2`)
 			str = plugins.insertBefore(str,
-			`new EditValue(assets, "songsDefault").load(() => assets.songsDefault.slice()),
+				`new EditValue(assets, "songsDefault").load(() => assets.songsDefault.slice()),
 			new EditFunction(SongSelect.prototype, "init").load(str => {
 				return plugins.insertBefore(str,
 				\`if(p2.session && assets.songs === assets.songsDefault){
@@ -28,7 +34,7 @@ export default class Plugin extends Patch{
 				'this.state.moveHover = null', \`
 				if(assets.songs === assets.songsDefault2){
 					localStorage["selectedSong"] = this.selectedSong
-					
+
 					this.clean()
 					setTimeout(() => {
 						new SongSelect(false, false, this.touchEnabled)
@@ -41,7 +47,7 @@ export default class Plugin extends Patch{
 				raw: true,
 				hide: true
 			})
-			if(this.newLoader){
+			if (this.newLoader) {
 				var newIndex = plugins.allPlugins.findIndex(obj => obj.plugin === this.newLoader)
 				var newObj = plugins.allPlugins.splice(newIndex, 1)
 				var oldIndex = plugins.allPlugins.findIndex(obj => obj.plugin === this.oldLoader)
@@ -50,49 +56,49 @@ export default class Plugin extends Patch{
 			}
 		}
 	}
-	start(){
+	start() {
 		setTimeout(() => {
-			if(this.newLoader){
-				if(this.oldLoader.started){
+			if (this.newLoader) {
+				if (this.oldLoader.started) {
 					this.oldLoader.stop()
 					assets.categories = this.categoriesDefault
 					this.newLoader.start()
 				}
-				if(!this.oldHide){
+				if (!this.oldHide) {
 					this.oldLoader.hide = true
 					this.newLoader.hide = false
 				}
 				setTimeout(() => {
-					if(assets.categories_ese){
+					if (assets.categories_ese) {
 						assets.categories = gameConfig.ese ? assets.categories_ese : assets.categoriesDefault
 					}
 				})
 			}
 		})
 	}
-	stop(){
+	stop() {
 		setTimeout(() => {
-			if(this.newLoader){
-				if(this.newLoader.started){
+			if (this.newLoader) {
+				if (this.newLoader.started) {
 					this.newLoader.stop()
 					assets.categories = this.categoriesDefault
 					this.oldLoader.start()
 				}
-				if(!this.oldHide){
+				if (!this.oldHide) {
 					this.newLoader.hide = true
 					this.oldLoader.hide = false
 				}
 				setTimeout(() => {
-					if(assets.categories_ese){
+					if (assets.categories_ese) {
 						assets.categories = gameConfig.ese ? assets.categories_ese : assets.categoriesDefault
 					}
 				})
 			}
 		})
 	}
-	unload(){
+	unload() {
 		setTimeout(() => {
-			if(this.newLoader){
+			if (this.newLoader) {
 				this.newLoader.unload()
 			}
 			delete this.newLoader

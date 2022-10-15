@@ -1,22 +1,30 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Change Timing Window"
+	name_lang = {
+		tw: "變更時間窗口"
+	}
 	version = "22.02.28"
 	description = "Custom input interval for in-game notes"
+	description_lang = {
+		tw: "自定義遊戲內音符的輸入間隔"
+	}
 	author = "Katie Frogs"
-	
+
 	score = {
 		good: 25,
 		ok: 75,
 		bad: 108
 	}
 	disableMultiplayer = true
-	
+
 	strings = {
 		good: {
 			name: "GOOD",
 			name_lang: {},
 			description: "Default: 25ms",
-			description_lang: {},
+			description_lang: {
+				tw: "預設：25 毫秒"
+			},
 			format: "%sms",
 			format_lang: {}
 		},
@@ -24,7 +32,9 @@ export default class Plugin extends Patch{
 			name: "OK",
 			name_lang: {},
 			description: "Default: 75ms",
-			description_lang: {},
+			description_lang: {
+				tw: "預設：75 毫秒"
+			},
 			format: "%sms",
 			format_lang: {}
 		},
@@ -32,24 +42,26 @@ export default class Plugin extends Patch{
 			name: "BAD",
 			name_lang: {},
 			description: "Default: 108ms",
-			description_lang: {},
+			description_lang: {
+				tw: "預設：108 毫秒"
+			},
 			format: "%sms",
 			format_lang: {}
 		}
 	}
-	
-	load(){
+
+	load() {
 		languageList.forEach(lang => {
 			Object.keys(this.strings).forEach(name => {
 				this.strings[name].name_lang[lang] = allStrings[lang][name]
 				this.strings[name].format_lang[lang] = allStrings[lang].calibration.ms
 			})
 		})
-		
+
 		this.addEdits(
 			new EditFunction(GameRules.prototype, "init").load(str => {
 				return plugins.insertBefore(str,
-				`this.good = this.getTiming("good")
+					`this.good = this.getTiming("good")
 				this.ok = this.getTiming("ok")
 				this.bad = this.getTiming("bad")
 				if(this.good > 25 || this.ok > 75){
@@ -60,24 +72,24 @@ export default class Plugin extends Patch{
 			new EditValue(GameRules.prototype, "getTiming").load(() => this.getTiming.bind(this))
 		)
 	}
-	getTiming(name){
-		if(name === "bad"){
+	getTiming(name) {
+		if (name === "bad") {
 			return Math.max(...Object.values(this.score))
-		}else{
+		} else {
 			return this.score[name]
 		}
 	}
-	start(){
-		if(this.disableMultiplayer){
+	start() {
+		if (this.disableMultiplayer) {
 			p2.disable()
 		}
 	}
-	stop(){
-		if(this.disableMultiplayer){
+	stop() {
+		if (this.disableMultiplayer) {
 			p2.enable()
 		}
 	}
-	settings(){
+	settings() {
 		return Object.keys(this.strings).map(name => {
 			var str = this.strings[name]
 			return {
