@@ -79,6 +79,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Display Game Cache**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/display-game-cache.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/display-game-cache.taikoweb.js)  
   Appends cached assets below the game
 
+- [**Debug Button**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/debug-button.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/debug-button.taikoweb.js)  
+  Adds a button to access the debug window
+
 ### Examples for Developers
 - [**Language: English**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js)  
   Example language plugin for translators
