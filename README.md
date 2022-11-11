@@ -82,6 +82,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Debug Button**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/debug-button.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/debug-button.taikoweb.js)  
   Adds a button to access the debug window
 
+- [**Convert Lyrics to vtt**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/convert-lyrics-to-vtt.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/debugging-testing/convert-lyrics-to-vtt.taikoweb.js)  
+  Adds an option to the pause screen to download converted lyrics in WEBVTT format
+
 ### Examples for Developers
 - [**Language: English**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/examples/language-en.taikoweb.js)  
   Example language plugin for translators
