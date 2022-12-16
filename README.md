@@ -20,6 +20,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
   Enables skipping the results screen in multiplayer, however, the other player will not get to see the full results screen without the plugin
   - [Userscript version](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/userscripts/skip-results-in-multiplayer.user.js)
 
+- [**Spartan Mode**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/spartan-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/spartan-mode.taikoweb.js)  
+  End song on first bad hit
+
 ### Song Select
 - [**Change Song Select Speed**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js)  
   Changes the song selection scroll speed
