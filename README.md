@@ -51,6 +51,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**D-pad Axis Input**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/dpad-axis-input.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/dpad-axis-input.taikoweb.js)  
   Binds axis input to D-pad for gamepads
 
+- [**Backup and Restore Scores**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/backup-and-restore-scores.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/backup-and-restore-scores.taikoweb.js)  
+  Save and load score data to a file
+
 ### Custom Songs
 - [**Green Notes**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/green-notes.taikoweb.js)  
   Adds support for green notes (G) and ad-lib notes (F) in custom charts
