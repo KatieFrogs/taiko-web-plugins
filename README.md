@@ -23,6 +23,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Spartan Mode**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/spartan-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/spartan-mode.taikoweb.js)  
   End song on first bad hit
 
+- [**Multiplayer Custom Songs**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/multiplayer-custom-songs.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/multiplayer-custom-songs.taikoweb.js)  
+  Extends netplay and session multiplayer to custom song lists, both players are required to have the same folders
+
 ### Song Select
 - [**Change Song Select Speed**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js)  
   Changes the song selection scroll speed
