@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Multiplayer Custom Songs"
-	version = "23.01.09"
+	version = "23.01.10"
 	description = "Extends netplay and session multiplayer to custom song lists, both players are required to have the same folders"
 	author = "Katie Frogs"
 	
@@ -146,6 +146,23 @@ export default class Plugin extends Patch{
 				if(assets.customSongs){
 					delete this.joinInvite
 				}`)
+			}),
+			new EditFunction(Search.prototype, "onClick").load(str => {
+				return plugins.strReplace(str, 
+				'var songId = parseInt(songEl.dataset.songId)',
+				`var songId = Number(songEl.dataset.songId)
+				if(isNaN(songId)){
+					songId = songEl.dataset.songId
+				}`)
+			}),
+			new EditFunction(Search.prototype, "keyPress").load(str => {
+				return plugins.strReplace(str, 
+				'this.proceed(parseInt(this.results[this.active].dataset.songId))',
+				`var songId = Number(this.results[this.active].dataset.songId)
+				if(isNaN(songId)){
+					songId = this.results[this.active].dataset.songId
+				}
+				this.proceed(songId)`)
 			}),
 			new EditValue(p2, "customSongsHash").load(() => this.customSongsHash),
 			new EditValue(Session.prototype, "customMpStr").load(() => this.customMpStr.bind(this)),
