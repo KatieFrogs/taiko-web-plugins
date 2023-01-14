@@ -46,6 +46,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
   
 - [**Language: French**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js)
   - (fr) [Langue: Français](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js)
+  
+- [**Language: Polish**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js)
+  - (pl) [Język: Polski](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js)
 
 ### Accessibility
 - [**Disable Animations**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/accessibility/disable-animations.taikoweb.js)  
