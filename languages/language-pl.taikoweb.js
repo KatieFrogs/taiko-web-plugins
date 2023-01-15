@@ -278,7 +278,7 @@
 			// The next string uses the following code to select the correct string:
 			// new Intl.PluralRules(strings.intl).select(number)
 			plugin: {
-				one: "%s wtyczka",
+				one: "%s wtyczkę",
 				few: "%s wtyczki",
 				many: "%s wtyczek",
 				other: "%s wtyczek"
