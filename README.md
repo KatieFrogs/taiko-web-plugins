@@ -40,6 +40,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Old Song List**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/workarounds/old-song-list.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/workarounds/old-song-list.taikoweb.js)  
   Restores the default taiko.bui.pm song list to show non-custom songs
 
+- [**Plugins in Old Taiko Web (Userscript)**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/userscripts/plugins-in-old-taiko-web.user.js)  
+  Implements the plugin interface in older versions of taiko-web, a userscript manager extension is required
+
 ### Additional Languages
 - [**Language: Spanish (Latin America)**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js)
   - (es-419) [Idioma: Español (Latinoamérica)](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js)
