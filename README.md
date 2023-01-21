@@ -1,5 +1,5 @@
 ## Taiko Web Plugins
-Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plugins. Save these .taikoweb.js files into a folder (right click and save as on the links below) and load them in-game via the Custom Song List button.
+Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plugins. Save these .taikoweb.js files into a folder (right click and save as on the links below) and load them in-game via the Plugins menu.
 
 ### Gameplay
 - [**Change Music Speed**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/change-music-speed.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/change-music-speed.taikoweb.js)  
@@ -46,10 +46,10 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 ### Additional Languages
 - [**Language: Spanish (Latin America)**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js)
   - (es-419) [Idioma: Español (Latinoamérica)](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-es-419.taikoweb.js)
-  
+
 - [**Language: French**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js)
   - (fr) [Langue: Français](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-fr.taikoweb.js)
-  
+
 - [**Language: Polish**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js)
   - (pl) [Język: Polski](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/languages/language-pl.taikoweb.js)
 
