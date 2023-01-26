@@ -76,6 +76,9 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Fumen File Format**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/fumen-file-format.taikoweb.js)  
   Adds support for using Fumen files in the custom song list
 
+- [**Donkey Konga Mode**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/donkey-konga-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/donkey-konga-mode.taikoweb.js)  
+  Adds support for custom Donkey Konga charts (GAME:Konga)
+
 ### For Fun
 - [**Big OK**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js)  
   When you get an OK judge score, the whole screen becomes a big OK
