@@ -1,6 +1,6 @@
 export default class Plugin extends Patch{
 	name = "Donkey Konga Mode"
-	version = "23.01.26"
+	version = "23.02.08"
 	description = "Adds support for custom Donkey Konga charts (GAME:Konga)"
 	author = "Katie Frogs"
 	
@@ -33,7 +33,7 @@ export default class Plugin extends Patch{
 				en: ["D", "D"]
 			},
 			clap: {
-				ja: ["チャッ", "チャッ"],
+				ja: ["チャ", "チャ"],
 				en: ["Clap", "Clap"]
 			}
 		}
@@ -313,7 +313,7 @@ export default class Plugin extends Patch{
 				}else `, 'if(!fade || fade < 1){')
 			}),
 			new EditFunction(GameRules.prototype, "init").load(str => {
-				return plugins.insertBefore(str,
+				str = plugins.insertBefore(str,
 				`if(game.bongoMode){
 					this.good = 3 / 2 * frame
 					this.ok = 9 / 2 * frame
@@ -323,6 +323,11 @@ export default class Plugin extends Patch{
 					}
 				}
 				`, 'this.daiLeniency = 2 * frame')
+				return plugins.insertAfter(str,
+				'this.daiLeniency = 2 * frame', `
+				if(game.bongoMode){
+					this.daiLeniency = 3 * frame
+				}`)
 			}),
 			new EditFunction(Mekadon.prototype, "play").load(str => {
 				str = plugins.strReplace(str,
