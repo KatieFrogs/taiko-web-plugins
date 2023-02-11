@@ -1,7 +1,7 @@
 export default class Plugin extends Patch{
 	name = "Donkey Konga Mode"
-	version = "23.02.08"
-	description = "Adds support for custom Donkey Konga charts (GAME:Konga)"
+	version = "23.02.11"
+	description = "Adds support for custom Donkey Konga charts (GAME:Bongo)"
 	author = "Katie Frogs"
 	
 	strings = {
@@ -103,7 +103,7 @@ export default class Plugin extends Patch{
 				return plugins.insertBefore(str,
 				`}else if(name === "game"){
 					value = value.toLowerCase()
-					if(value === "konga"){
+					if(value === "bongo" || value === "konga"){
 						currentCourse.bongoMode = true
 					}
 				`, '}else if(name === "balloon"){')

@@ -77,7 +77,7 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
   Adds support for using Fumen files in the custom song list
 
 - [**Donkey Konga Mode**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/donkey-konga-mode.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/custom-songs/donkey-konga-mode.taikoweb.js)  
-  Adds support for custom Donkey Konga charts (GAME:Konga)
+  Adds support for custom Donkey Konga charts (GAME:Bongo)
 
 ### For Fun
 - [**Big OK**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/for-fun/big-ok.taikoweb.js)  
