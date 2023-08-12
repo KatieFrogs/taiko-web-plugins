@@ -1,66 +1,72 @@
 export default class Plugin extends Patch {
-    name = "Rainbow Crown"
-    version = "22.03.02"
-    description = "Donder-Full Combos will give rainbow crowns"
-    author = "purerosefallen, Katie Frogs"
+	name = "Rainbow Crown"
+	name_lang = {
+		tw: "彩虹皇冠"
+	}
+	version = "22.03.02"
+	description = "Donder-Full Combos will give rainbow crowns"
+	description_lang = {
+		tw: "Donder-Full 連擊將會給你彩虹皇冠"
+	}
+	author = "purerosefallen, Katie Frogs"
 
-    load() {
-        //Donder Promise
-        var promise = snd.sfxGain.load(new RemoteFile(v_donderfulcombo())).then(sound => {
-            assets.sounds["v_donderfulcombo"] = sound
+	load() {
+		//Donder Promise
+		var promise = snd.sfxGain.load(new RemoteFile(v_donderfulcombo())).then(sound => {
+			assets.sounds["v_donderfulcombo"] = sound
 
-        })
+		})
 
-        this.addEdits(
-            // Rainbow Crown #1
-            new EditFunction(Scoresheet.prototype, "redraw").load(str => {
-                str = plugins.strReplace(str, `crownType = results.bad === "0" ? "gold" : "silver"`, `crownType = results.bad === "0" ? (results.ok === "0" ? "rainbow" : "gold") : "silver"`)
-                str = plugins.strReplace(str, `if(crownType === "gold"){`, `if(crownType === "gold" || crownType === "rainbow"){ // TODO: sound effect of donder full combo`)
-                return str
-            }),
-            // Rainbow Crown #2
-            new EditFunction(Scoresheet.prototype, "saveScore").load(str => {
-                str = plugins.strReplace(str, `crown = this.resultsObj.bad === 0 ? "gold" : "silver"`, `crown = this.resultsObj.bad === 0 ? (this.resultsObj.ok === 0 ? "rainbow" : "gold") : "silver"`)
-                str = plugins.strReplace(str, `if(oldScore && (oldScore.crown === "gold" || oldScore.crown === "silver" && !crown)){`, `if(oldScore && (oldScore.crown === "rainbow" || oldScore.crown === "gold" && (crown === "silver" || !crown) || oldScore.crown === "silver" && !crown)){`)
-                str = plugins.strReplace(str, `}else if(oldScore && (crown === "gold" && oldScore.crown !== "gold" || crown && !oldScore.crown)){`, `}else if(oldScore && ((crown === "rainbow" && oldScore.crown !== "rainbow") || crown === "gold" && (oldScore.crown === "silver"  ||!oldScore.crown) || crown && !oldScore.crown)){`)
-                return str
-            }),
-            // Rainbow Crown #3 (<3 Katie)
-            new EditFunction(ScoreStorage.prototype, "init").load(str => {
-                str = plugins.insertAfter(str,
-                    'this.crownValue = ["", "silver", "gold"', `, "rainbow"`)
-                return plugins.insertAfter(str,
-                    'this.scoreKeys = ["points", "good", "ok", "bad", "maxCombo", "drumroll"', `, "rainbow"`)
-            }),
-            new EditFunction(ScoreStorage.prototype, "load").load(str => {
-                str = plugins.insertBefore(str,
-                    `if(name === "rainbow" && value){
-                    score.crown = "rainbow"
-                }
-                `, 'score[name] = value')
+		this.addEdits(
+			// Rainbow Crown #1
+			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
+				str = plugins.strReplace(str, `crownType = results.bad === "0" ? "gold" : "silver"`, `crownType = results.bad === "0" ? (results.ok === "0" ? "rainbow" : "gold") : "silver"`)
+				str = plugins.strReplace(str, `if(crownType === "gold"){`, `if(crownType === "gold" || crownType === "rainbow"){ // TODO: sound effect of donder full combo`)
+				return str
+			}),
+			// Rainbow Crown #2
+			new EditFunction(Scoresheet.prototype, "saveScore").load(str => {
+				str = plugins.strReplace(str, `crown = this.resultsObj.bad === 0 ? "gold" : "silver"`, `crown = this.resultsObj.bad === 0 ? (this.resultsObj.ok === 0 ? "rainbow" : "gold") : "silver"`)
+				str = plugins.strReplace(str, `if(oldScore && (oldScore.crown === "gold" || oldScore.crown === "silver" && !crown)){`, `if(oldScore && (oldScore.crown === "rainbow" || oldScore.crown === "gold" && (crown === "silver" || !crown) || oldScore.crown === "silver" && !crown)){`)
+				str = plugins.strReplace(str, `}else if(oldScore && (crown === "gold" && oldScore.crown !== "gold" || crown && !oldScore.crown)){`, `}else if(oldScore && ((crown === "rainbow" && oldScore.crown !== "rainbow") || crown === "gold" && (oldScore.crown === "silver"  ||!oldScore.crown) || crown && !oldScore.crown)){`)
+				return str
+			}),
+			// Rainbow Crown #3 (<3 Katie)
+			new EditFunction(ScoreStorage.prototype, "init").load(str => {
+				str = plugins.insertAfter(str,
+					'this.crownValue = ["", "silver", "gold"', `, "rainbow"`)
+				return plugins.insertAfter(str,
+					'this.scoreKeys = ["points", "good", "ok", "bad", "maxCombo", "drumroll"', `, "rainbow"`)
+			}),
+			new EditFunction(ScoreStorage.prototype, "load").load(str => {
+				str = plugins.insertBefore(str,
+					`if(name === "rainbow" && value){
+						score.crown = "rainbow"
+					}
+					`, 'score[name] = value')
 				str = plugins.insertAfter(str, 'parseInt(scoreArray[j]', ` || 0`)
-                return plugins.insertBefore(str,
-                    `if(score.crown === "gold" && score.good >= 1 && score.ok === 0 && score.bad === 0){
-                    score.crown = "rainbow"
-                }
-                `, 'if(!songAdded){')
-            }),
-            new EditFunction(ScoreStorage.prototype, "writeString").load(str => {
-                str = plugins.insertAfter(str, 'var scoreArray = []', `
-                score[diff].rainbow = score[diff].crown === "rainbow"`)
-                return plugins.insertBefore(str,
-                    `score[diff].crown === "rainbow" ? "2" : `, 'this.crownValue')
-            }),
-            // Rainbow Crown #4 (<3 Katie)
-            new EditValue(window, "scoreStorage").load(() => {
-                this.oldScoreStoage = scoreStorage
-                this.newScoreStorage = new ScoreStorage()
-                this.newScoreStorage.load(scoreStorage.prepareScores(scoreStorage.scoreStrings))
-                return this.newScoreStorage
-            }),
-            // Rainbow Crown #5
-            new EditFunction(CanvasDraw.prototype, "crown").load(str => {
-                str = plugins.strReplace(str, `if(config.type === "gold"){`, `if(config.type === "rainbow"){ // TODO
+				return plugins.insertBefore(str,
+					`if(score.crown === "gold" && score.good >= 1 && score.ok === 0 && score.bad === 0){
+						score.crown = "rainbow"
+					}
+					`, 'if(!songAdded){')
+			}),
+			new EditFunction(ScoreStorage.prototype, "writeString").load(str => {
+				str = plugins.insertAfter(str, 'var scoreArray = []', `
+					score[diff].rainbow = score[diff].crown === "rainbow"`)
+				return plugins.insertBefore(str,
+					`score[diff].crown === "rainbow" ? "2" : `, 'this.crownValue')
+			}),
+			// Rainbow Crown #4 (<3 Katie)
+			new EditValue(window, "scoreStorage").load(() => {
+				this.oldScoreStoage = scoreStorage
+				this.newScoreStorage = new ScoreStorage()
+				this.newScoreStorage.load(scoreStorage.prepareScores(scoreStorage.scoreStrings))
+				return this.newScoreStorage
+			}),
+			// Rainbow Crown #5
+			new EditFunction(CanvasDraw.prototype, "crown").load(str => {
+				str = plugins.strReplace(str, `if(config.type === "gold"){`, `if(config.type === "rainbow"){ // TODO
 				grd.addColorStop(0,"#0000ff")
 				grd.addColorStop(0.15,"#00ffff")
 				grd.addColorStop(0.35,"#00ff88")
@@ -69,11 +75,11 @@ export default class Plugin extends Patch {
 				grd.addColorStop(0.85,"#ff8800")
 				grd.addColorStop(1,"#ff00ff")
 			}else if(config.type === "gold"){`)
-                return str
-            }),
-            // Rainbow Crown #6
-            new EditFunction(Controller.prototype, "gameEnded").load(str => {
-                str = plugins.strReplace(str, `if(score.bad === 0){
+				return str
+			}),
+			// Rainbow Crown #6
+			new EditFunction(Controller.prototype, "gameEnded").load(str => {
+				str = plugins.strReplace(str, `if(score.bad === 0){
 				vp = "fullcombo"
 				this.playSound("v_fullcombo", 1.350)
 			}else{
@@ -83,7 +89,7 @@ export default class Plugin extends Patch {
 			vp = "fail"
 		}
 		this.playSound("se_game" + vp)`, `if(score.ok === 0 && score.bad === 0){ // TODO: donder fullcombo
-                                this.playSound("v_donderfulcombo", 0.050)
+			this.playSound("v_donderfulcombo", 0.050)
 							}else if(score.bad === 0){
 				vp = "fullcombo"
 				this.playSound("v_fullcombo", 1.350)
@@ -96,25 +102,25 @@ export default class Plugin extends Patch {
 		if(vp){
 			this.playSound("se_game" + vp)
 		}`)
-                return str
-            }),
+				return str
+			}),
 
-        )
-        return promise
-    }
-    stop() {
-        if (this.oldScoreStoage && this.newScoreStorage) {
-            this.oldScoreStoage.load(this.newScoreStorage.prepareScores(this.newScoreStorage.scoreStrings))
-        }
-        delete this.oldScoreStoage
-        delete this.newScoreStorage
-    }
+		)
+		return promise
+	}
+	stop() {
+		if (this.oldScoreStoage && this.newScoreStorage) {
+			this.oldScoreStoage.load(this.newScoreStorage.prepareScores(this.newScoreStorage.scoreStrings))
+		}
+		delete this.oldScoreStoage
+		delete this.newScoreStorage
+	}
 }
 
 
 // Add Donderful Audio
 function v_donderfulcombo() {
-    return "data:audio/ogg;base64,T2dnUwACAAAAAAAAAADkZAAAAAAAAB/SkgUBHgF2b3JiaXMAAAAAAkSsAAAAAAAAbaAHAAAAAAC4AU9nZ1MAAAAAAAAAAAAA5GQAAAEAAADDQu/yEVb///////////////////9TA3ZvcmJpcysAAABYaXBoLk9yZyBsaWJWb3JiaXMgSSAyMDEyMDIwMyAoT21uaXByZXNlbnQpAQAAABcAAABFTkNPREVSPUF1ZGlvIENvbnZlcnRlcgEFdm9yYmlzK0JDVgEACAAAADFMIMWA0JBVAAAQAABgJCkOk2ZJKaWUoSh5mJRISSmllMUwiZiUicUYY4wxxhhjjDHGGGOMIDRkFQAABACAKAmOo+ZJas45ZxgnjnKgOWlOOKcgB4pR4DkJwvUmY26mtKZrbs4pJQgNWQUAAAIAQEghhRRSSCGFFGKIIYYYYoghhxxyyCGnnHIKKqigggoyyCCDTDLppJNOOu\
+	return "data:audio/ogg;base64,T2dnUwACAAAAAAAAAADkZAAAAAAAAB/SkgUBHgF2b3JiaXMAAAAAAkSsAAAAAAAAbaAHAAAAAAC4AU9nZ1MAAAAAAAAAAAAA5GQAAAEAAADDQu/yEVb///////////////////9TA3ZvcmJpcysAAABYaXBoLk9yZyBsaWJWb3JiaXMgSSAyMDEyMDIwMyAoT21uaXByZXNlbnQpAQAAABcAAABFTkNPREVSPUF1ZGlvIENvbnZlcnRlcgEFdm9yYmlzK0JDVgEACAAAADFMIMWA0JBVAAAQAABgJCkOk2ZJKaWUoSh5mJRISSmllMUwiZiUicUYY4wxxhhjjDHGGGOMIDRkFQAABACAKAmOo+ZJas45ZxgnjnKgOWlOOKcgB4pR4DkJwvUmY26mtKZrbs4pJQgNWQUAAAIAQEghhRRSSCGFFGKIIYYYYoghhxxyyCGnnHIKKqigggoyyCCDTDLppJNOOu\
 moo4466ii00EILLbTSSkwx1VZjrr0GXXxzzjnnnHPOOeecc84JQkNWAQAgAAAEQgYZZBBCCCGFFFKIKaaYcgoyyIDQkFUAACAAgAAAAABHkRRJsRTLsRzN0SRP8ixREzXRM0VTVE1VVVVVdV1XdmXXdnXXdn1ZmIVbuH1ZuIVb2IVd94VhGIZhGIZhGIZh+H3f933f930gNGQVACABAKAjOZbjKaIiGqLiOaIDhIasAgBkAAAEACAJkiIpkqNJpmZqrmmbtmirtm3LsizLsgyEhqwCAAABAAQAAAAAAKBpmqZpmqZpmqZpmqZpmqZpmqZpmmZZlmVZlmVZlmVZlmVZlmVZlmVZlmVZlmVZlmVZlmVZlmVZlmVZQGjIKgBAAgBAx3Ecx3EkRVIkx3IsBwgNWQUAyAAACABAUizFcjRHczTHczzHczxHdETJlEzN9EwPCA1ZBQAAAgAIAAAAAABAMRzFcRzJ0SRPUi3TcjVXcz3Xc03XdV\
 1XVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVYHQkFUAAAQAACGdZpZqgAgzkGEgNGQVAIAAAAAYoQhDDAgNWQUAAAQAAIih5CCa0JrzzTkOmuWgqRSb08GJVJsnuamYm3POOeecbM4Z45xzzinKmcWgmdCac85JDJqloJnQmnPOeRKbB62p0ppzzhnnnA7GGWGcc85p0poHqdlYm3POWdCa5qi5FJtzzomUmye1uVSbc84555xzzjnnnHPOqV6czsE54Zxzzonam2u5CV2cc875ZJzuzQnhnHPOOeecc84555xzzglCQ1YBAEAAAARh2BjGnYIgfY4GYhQhpiGTHnSPDpOgMcgppB6NjkZKqYNQUhknpXSC0JBVAAAgAACEEFJIIYUUUkghhRRSSCGGGGKIIaeccgoqqKSSiirKKLPMMssss8wyy6zDzjrrsMMQQwwxtNJKLDXVVmONteaec645SGultdZaK6WUUkoppS\
 A0ZBUAAAIAQCBkkEEGGYUUUkghhphyyimnoIIKCA1ZBQAAAgAIAAAA8CTPER3RER3RER3RER3RER3P8RxREiVREiXRMi1TMz1VVFVXdm1Zl3Xbt4Vd2HXf133f141fF4ZlWZZlWZZlWZZlWZZlWZZlCUJDVgEAIAAAAEIIIYQUUkghhZRijDHHnINOQgmB0JBVAAAgAIAAAAAAR3EUx5EcyZEkS7IkTdIszfI0T/M00RNFUTRNUxVd0RV10xZlUzZd0zVl01Vl1XZl2bZlW7d9WbZ93/d93/d93/d93/d939d1IDRkFQAgAQCgIzmSIimSIjmO40iSBISGrAIAZAAABACgKI7iOI4jSZIkWZImeZZniZqpmZ7pqaIKhIasAgAAAQAEAAAAAACgaIqnmIqniIrniI4oiZZpiZqquaJsyq7ruq7ruq7ruq7ruq7ruq7ruq7ruq7ruq7ruq7ruq7ruq7rukBoyCoAQAIAQEdyJEdyJEVSJE\

@@ -1,21 +1,27 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Green Notes"
+	name_lang = {
+		tw: "綠色音符"
+	}
 	version = "22.02.28"
 	description = "Adds support for green notes (G) and ad-lib notes (F) in custom charts"
+	description_lang = {
+		tw: "新增「綠色音符（G）」和「插入音符（F）」的支援到自定義譜面"
+	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		var promise = snd.sfxGain.load(new RemoteFile(se_hidden())).then(sound => {
 			assets.sounds["se_hidden"] = sound
 			assets.sounds["se_hidden_p1"] = sound.copy(snd.sfxGainL)
 			assets.sounds["se_hidden_p2"] = sound.copy(snd.sfxGainR)
 		})
-		
+
 		this.addEdits(
 			new EditFunction(CanvasDraw.prototype, "score").load(str => {
 				str = plugins.insertAfter(str, 'strings.good === "良"', ` && config.score !== "adlib"`)
 				return plugins.insertBefore(str,
-				`else if(config.score === "adlib"){
+					`else if(config.score === "adlib"){
 					if(config.results){
 						ctx.textAlign = "right"
 					}
@@ -41,15 +47,15 @@ export default class Plugin extends Patch{
 			}),
 			new EditFunction(Game.prototype, "skipNote").load(str => {
 				str = plugins.insertBefore(str,
-				`if(circle.type !== "adlib"){
+					`if(circle.type !== "adlib"){
 				`, 'this.sectionNotes.push(0)')
 				return plugins.insertAfter(str,
-				'this.updateGlobalScore(0, 1)', `
+					'this.updateGlobalScore(0, 1)', `
 				}`)
 			}),
 			new EditFunction(Game.prototype, "checkPlays").load(str => {
 				return plugins.insertBefore(str,
-				`if((don_l || don_r) && (ka_l || ka_r)){
+					`if((don_l || don_r) && (ka_l || ka_r)){
 					this.checkKey(["don_l", "don_r", "ka_l", "ka_r"], circle, "green")
 				}else `, 'if(keyTime["don"] >= keyTime["ka"]){')
 			}),
@@ -64,18 +70,18 @@ export default class Plugin extends Patch{
 				str = plugins.insertAfter(str, 'keysDon && typeDon || keysKa && typeKa', ` || typeGreen`)
 				str = plugins.insertBefore(str, `typeGreen ? !keyGreen : `, 'typeDai && !keyDai')
 				str = plugins.insertBefore(str,
-				` if(typeGreen){
+					` if(typeGreen){
 					return true
 				}else`, '{\n\t\t\t\t\t\tcircleStatus = circle.daiFailed.status')
 				str = plugins.strReplace(str,
-				'circle.played(score, score === 0 ? typeDai : keyDai)\n\t\t\t\tthis.controller.displayScore(score, false, typeDai && keyDai)',
-				`circle.played(score, score === 0 ? typeDai : (keyDai || typeGreen))
+					'circle.played(score, score === 0 ? typeDai : keyDai)\n\t\t\t\tthis.controller.displayScore(score, false, typeDai && keyDai)',
+					`circle.played(score, score === 0 ? typeDai : (keyDai || typeGreen))
 				if(!typeAdlib || score){
 					this.controller.displayScore(score, false, typeDai && keyDai || typeGreen, typeAdlib)
 				}`)
 				str = plugins.strReplace(str,
-				'this.updateCombo(score)\n\t\t\tthis.updateGlobalScore(score, typeDai && keyDai ? 2 : 1, circle.gogoTime)',
-				`if(!typeAdlib || score){
+					'this.updateCombo(score)\n\t\t\tthis.updateGlobalScore(score, typeDai && keyDai ? 2 : 1, circle.gogoTime)',
+					`if(!typeAdlib || score){
 					this.updateCombo(score)
 					var doubleScore = typeDai && keyDai || typeGreen
 					this.updateGlobalScore(score, doubleScore ? 2 : 1, circle.gogoTime)
@@ -85,25 +91,25 @@ export default class Plugin extends Patch{
 					this.globalScore.adlib++
 				}`)
 				str = plugins.strReplace(str,
-				'dai: typeDai ? (keyDai ? 2 : 1) : 0',
-				`dai: typeDai ? (keyDai ? 2 : 1) : (typeGreen ? 2 : 0)`)
+					'dai: typeDai ? (keyDai ? 2 : 1) : 0',
+					`dai: typeDai ? (keyDai ? 2 : 1) : (typeGreen ? 2 : 0)`)
 				str = plugins.strReplace(str, 'keysDon && type === "balloon"', `(keysDon || keyGreen) && type === "balloon"`)
 				str = plugins.insertBefore(str, ` || keyGreen`, ') && (type === "drumroll" || type === "daiDrumroll")')
 				return plugins.strReplace(str,
-				'if(keyDai){\n\t\t\t\t\tthis.checkDrumroll(circle, keysKa)',
-				`if(keyDai || keyGreen){
+					'if(keyDai){\n\t\t\t\t\tthis.checkDrumroll(circle, keysKa)',
+					`if(keyDai || keyGreen){
 					this.checkDrumroll(circle, keysKa || keyGreen)`)
 			}),
 			new EditFunction(Game.prototype, "updateCurrentCircle").load(str => {
 				return plugins.insertBefore(str,
-				`if(circles[this.currentCircle] && circles[this.currentCircle].type === "adlib"){
+					`if(circles[this.currentCircle] && circles[this.currentCircle].type === "adlib"){
 					this.globalScore.adlibTotal++
 				}
 				`, 'do{')
 			}),
 			new EditFunction(GameInput.prototype, "checkKeySound").load(str => {
 				return plugins.insertBefore(str,
-				`if(circle.type === "adlib"){
+					`if(circle.type === "adlib"){
 					var relative = Math.abs(currentTime - circle.ms)
 					if(relative < this.game.rules.ok){
 						this.controller.playSound("se_hidden")
@@ -113,8 +119,8 @@ export default class Plugin extends Patch{
 			}),
 			new EditFunction(Mekadon.prototype, "playNow").load(str => {
 				str = plugins.insertAfter(str, 'if(type === "don" || type === "daiDon"', ` || type === "adlib"`)
-				str = plugins.insertBefore(str, 
-				`else if(type === "adlib"){
+				str = plugins.insertBefore(str,
+					`else if(type === "adlib"){
 					type = "don"
 				}
 				`, 'if(type === "daiDon" && playDai){')
@@ -126,7 +132,7 @@ export default class Plugin extends Patch{
 					keyDai = true`)
 				str = plugins.insertAfter(str, 'this.controller.displayScore(score, false, keyDai', `, circle.type === "adlib"`)
 				return plugins.insertBefore(str,
-				`if(circle.type === "adlib" && score){
+					`if(circle.type === "adlib" && score){
 					this.game.globalScore.adlib++
 				}
 				`, 'this.game.sectionNotes.push')
@@ -141,7 +147,7 @@ export default class Plugin extends Patch{
 			}),
 			new EditFunction(Scoresheet.prototype, "redraw").load(str => {
 				str = plugins.insertBefore(str,
-				`var showAdlib = false
+					`var showAdlib = false
 				for(var p = 0; p < players; p++){
 					var results = this.results[p]
 					if(results.adlibTotal > 0){
@@ -172,20 +178,20 @@ export default class Plugin extends Patch{
 					])
 				}`)
 				str = plugins.insertBefore(str,
-				`if(showAdlib){
+					`if(showAdlib){
 					printNumbers.push("adlib")
 				}
 				`, 'if(!this.state["countupTime0"]){')
 				str = plugins.strReplace(str,
-				'var currentTime = lastTime + 500 + results[printNumbers[i]].length * 30 * this.frame',
-				`if(printNumbers[i] === "adlib"){
+					'var currentTime = lastTime + 500 + results[printNumbers[i]].length * 30 * this.frame',
+					`if(printNumbers[i] === "adlib"){
 					var resultsNumber = (results.adlibTotal > 0 ? Math.floor(results.adlib / results.adlibTotal * 100) : 0).toString()
 				}else{
 					var resultsNumber = results[printNumbers[i]]
 				}
 				var currentTime = lastTime + 500 + resultsNumber.length * 30 * this.frame`)
 				str = plugins.insertAfter(str,
-				'var start = this.state["countupTime" + p][printNumbers[i]]', `
+					'var start = this.state["countupTime" + p][printNumbers[i]]', `
 				var isAdlib = printNumbers[i] === "adlib"
 				if(isAdlib){
 					var resultsNumber = (results.adlibTotal > 0 ? Math.floor(results.adlib / results.adlibTotal * 100) : 0).toString()
@@ -193,12 +199,12 @@ export default class Plugin extends Patch{
 					var resultsNumber = results[printNumbers[i]]
 				}`)
 				str = plugins.strReplace(str,
-				'text: this.getNumber(results[printNumbers[i]], start, elapsed),',
-				`text: this.getNumber(resultsNumber, start, elapsed),`)
+					'text: this.getNumber(results[printNumbers[i]], start, elapsed),',
+					`text: this.getNumber(resultsNumber, start, elapsed),`)
 				str = plugins.insertAfter(str, 'x: 971 + 270 * Math.floor(i / 3)', ` - (isAdlib ? 25 : 0)`)
 				return plugins.strReplace(str,
-				'letterSpacing: 1,',
-				`letterSpacing: isAdlib ? -1 : 1,`)
+					'letterSpacing: 1,',
+					`letterSpacing: isAdlib ? -1 : 1,`)
 			}),
 			new EditValue(allStrings.en.note, "green").load(() => "Green"),
 			new EditValue(allStrings.ja.note, "green").load(() => "グリーン"),
@@ -207,13 +213,13 @@ export default class Plugin extends Patch{
 			new EditValue(allStrings.ko.note, "green").load(() => "녹색"),
 			new EditFunction(View.prototype, "refresh").load(str => {
 				str = plugins.insertBefore(str,
-				`var drawScore = this.currentScore.adlib ? "adlib" : scores[this.currentScore.type]
+					`var drawScore = this.currentScore.adlib ? "adlib" : scores[this.currentScore.type]
 				`, 'var yOffset = scoreMS < 70 ? scoreMS * (13 / 70) : 0')
 				return plugins.strReplace(str, 'score: scores[this.currentScore.type],', `score: drawScore,`)
 			}),
 			new EditFunction(View.prototype, "drawCircle").load(str => {
 				return plugins.insertBefore(str,
-				`}else if(type === "green"){
+					`}else if(type === "green"){
 					fill = "#5eb956"
 					size = bigCircleSize
 					faceID = noteFace.big
@@ -222,20 +228,20 @@ export default class Plugin extends Patch{
 			new EditFunction(View.prototype, "displayScore").load((str, args) => {
 				args.push("adlib")
 				return plugins.insertAfter(str,
-				'this.currentScore.bigNote = bigNote', `
+					'this.currentScore.bigNote = bigNote', `
 				this.currentScore.adlib = adlib`)
 			})
 		)
 		return promise
 	}
-	unload(){
+	unload() {
 		delete assets.sounds["se_hidden"]
 		delete assets.sounds["se_hidden_p1"]
 		delete assets.sounds["se_hidden_p2"]
 	}
 }
 
-function se_hidden(){
+function se_hidden() {
 	return "data:audio/ogg;base64,T2dnUwACAAAAAAAAAAB7t/xBAAAAAF4wq/wBHgF2b3JiaXMAAAAAAiJWAAAAAAAAagQBAAAAAACpAU9nZ1MAAAAAAAAAAAAAe7f8QQEAAAA+yTTWD2D/////////////////tgN2b3JiaXM0AAAAWGlwaC5PcmcgbGliVm9yYmlzIEkgMjAyMDA3MDQgKFJlZHVjaW5nIEVudmlyb25tZW50KQEAAAAYAAAAQ29tbWVudD1Qcm9jZXNzZWQgYnkgU29YAQV2b3JiaXMhQkNWAQBAAAAYQhAqBa1jjjrIFSGMGaKgQsopxx1C0CGjJEOIOsY1xxhjR7lkikLJgdCQVQAAQAAApBxXUHJJLeecc6MYV8xx6CDnnHPlIGfMcQkl55xzjjnnknKOMeecc6MYVw5yKS3nnHOBFEeKcacY55xzpBxHinGoGOecc20xt5JyzjnnnHPmIIdScq4155xzpBhnDnILJe\
 ecc8YgZ8xx6yDnnHOMNbfUcs4555xzzjnnnHPOOeecc4wx55xzzjnnnHNuMecWc64555xzzjnnHHPOOeeccyA0ZBUAkAAAoKEoiuIoDhAasgoAyAAAEEBxFEeRFEuxHMvRJA0IDVkFAAABAAgAAKBIhqRIiqVYjmZpniZ6oiiaoiqrsmnKsizLsuu6LhAasgoASAAAUFEUxXAUBwgNWQUAZAAACGAoiqM4juRYkqVZngeEhqwCAIAAAAQAAFAMR7EUTfEkz/I8z/M8z/M8z/M8z/M8z/M8z/M8DQgNWQUAIAAAAIIoZBgDQkNWAQBAAAAIIRoZQ51SElwKFkIcEUMdQs5DqaWD4CmFJWPSU6xBCCF87z333nvvgdCQVQAAEAAAYRQ4iIHHJAghhGIUJ0RxpiAIIYTlJFjKeegkCN2DEEK4nHvLuffeeyA0ZBUAAAgAwCCEEEIIIYQQQggppJRSSCmmmGKKKcccc8wxxyCDDDLooJNOOs\
 mkkk46yiSjjlJrKbUUU0yx5RZjrbXWnHOvQSljjDHGGGOMMcYYY4wxxhgjCA1ZBQCAAAAQBhlkkEEIIYQUUkgppphyzDHHHANCQ1YBAIAAAAIAAAAcRVIkR3IkR5IkyZIsSZM8y7M8y7M8TdRETRVV1VVt1/ZtX/Zt39Vl3/Zl29VlXZZl3bVtXdZdXdd1Xdd1Xdd1Xdd1Xdd1XdeB0JBVAIAEAICO5DiO5DiO5EiOpEgKEBqyCgCQAQAQAICjOIrjSI7kWI4lWZImaZZneZaneZqoiR4QGrIKAAAEABAAAAAAAICiKIqjOI4kWZamaZ6neqIomqqqiqapqqpqmqZpmqZpmqZpmqZpmqZpmqZpmqZpmqZpmqZpmqZpmqZpAqEhqwAACQAAHcdxHEdxHMdxJEeSJCA0ZBUAIAMAIAAAQ1EcRXIsx5I0S7M8y9NEz/RcUTZ1U1dtIDRkFQAACAAgAAAAAAAAx3M8x3M8yZM8y3M8x5M8Sd\

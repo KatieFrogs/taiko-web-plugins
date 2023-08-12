@@ -1,16 +1,18 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Show BPM"
 	name_lang = {
-		ja: "BPMを表示する"
+		ja: "BPMを表示する",
+		tw: "顯示譜面 BPM"
 	}
 	version = "22.02.22"
 	description = "Displays the current BPM in game"
 	description_lang = {
-		ja: "ゲーム中のBPMを表示します"
+		ja: "ゲーム中のBPMを表示します",
+		tw: "在遊戲中顯示目前譜面的 BPM"
 	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		this.addEdits(
 			new EditFunction(View.prototype, "refresh").load(str => {
 				return plugins.insertBefore(str, `

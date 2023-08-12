@@ -1,24 +1,30 @@
-export default class Plugin extends Patch{
+export default class Plugin extends Patch {
 	name = "Loading Background"
+	name_lang = {
+		tw: "載入背景"
+	}
 	version = "22.05.15"
 	description = "Shows a custom loading background if a loading.png file is in the same directory as the chart"
+	description_lang = {
+		tw: "如果譜面目錄下有「loading.png」則顯示自定義載入背景"
+	}
 	author = "Katie Frogs"
-	
-	load(){
+
+	load() {
 		this.addEdits(
 			new EditFunction(ImportSongs.prototype, "addTja").load(str => {
 				return plugins.insertBefore(str,
-				`songObj.loadingBg = this.otherFiles[file.path.slice(0, file.path.lastIndexOf("/") + 1).toLowerCase() + "loading.png"]
+					`songObj.loadingBg = this.otherFiles[file.path.slice(0, file.path.lastIndexOf("/") + 1).toLowerCase() + "loading.png"]
 				`, 'if(titleLangAdded){')
 			}),
 			new EditFunction(ImportSongs.prototype, "addOsu").load(str => {
 				return plugins.insertBefore(str,
-				`songObj.loadingBg = this.otherFiles[file.path.slice(0, file.path.lastIndexOf("/") + 1).toLowerCase() + "loading.png"]
+					`songObj.loadingBg = this.otherFiles[file.path.slice(0, file.path.lastIndexOf("/") + 1).toLowerCase() + "loading.png"]
 				`, 'if(title){')
 			}),
 			new EditFunction(SongSelect.prototype, "toLoadSong").load(str => {
 				str = plugins.insertBefore(str,
-				`var loadingBg
+					`var loadingBg
 				if(selectedSong.loadingBg){
 					var promise = selectedSong.loadingBg.blob().then(blob => {
 						var blobUrl = URL.createObjectURL(blob)
@@ -44,7 +50,7 @@ export default class Plugin extends Patch{
 			}),
 			new EditFunction(LoadSong.prototype, "run").load(str => {
 				return plugins.insertBefore(str,
-				`if(song.loadingBg){
+					`if(song.loadingBg){
 					this.loadingBg = song.loadingBg
 					var loadSongDiv = document.getElementById("load-song")
 					loadSongDiv.style.backgroundImage = "url('" + this.loadingBg + "')"
