@@ -26,7 +26,14 @@ Expand the feature set of [Taiko Web](https://github.com/bui/taiko-web) with plu
 - [**Multiplayer Custom Songs**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/multiplayer-custom-songs.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/gameplay/multiplayer-custom-songs.taikoweb.js)  
   Extends netplay and session multiplayer to custom song lists, both players are required to have the same folders
 
+  Extends netplay and session multiplayer to custom song lists, both players are required to have the same folders
+
+- [**Ryota Custom Taiko Assets**](https://raw.githubusercontent.com/ryota031554-bot/taiko-web-plugins/main/gameplay/ryota.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/ryota031554-bot/taiko-web-plugins/raw/main/gameplay/ryota.taikoweb.js)
+- [**Ryota Custom Taiko Assets**] 
+  Custom dancers, characters, runner, mob and backgrounds
+
 ### Song Select
+
 - [**Change Song Select Speed**](https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js) [(⬇️)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KatieFrogs/taiko-web-plugins/raw/main/song-select/change-song-select-speed.taikoweb.js)  
   Changes the song selection scroll speed
 
